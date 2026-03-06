@@ -1,0 +1,1 @@
+<!-- <b> defines the bold text <i> defines the italic text <u> defines the inderlined <strong> defines the strong text <br/> inserts single break <div> defines a section in a dociment </hr> defines the horizontal rule <sub> defines subscript text (h20) <sup> defines a superscript text <ol> odered list <ul> defines an unordered list <li>-->
