@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Var vs Let & Data Types</title>
+</head>
+<body>
+    <h2>JavaScript var vs let, Data Types & Escape Characters</h2>
+    <p id="output"></p>
+    <script>
+        var a = 10;
+        var a = 20;
+        
+        let b = 30;
+        b = 40;
+
+        let num = 100;
+        let str = "Hello \"world\"";
+        let bool = true;
+        let undef;
+        let n = null;
+
+        let escapeText = "Line1\nLine2\tTabbed\n\"Quoted Text\"";
+
+        document.getElementById("output").innerHTML =
+        "<b>var value :</b>" + a + "<br>" +
+        "<b>let value :</b>" + b + "<br><br>" +
+
+        "<b>Number:</b>" + num + "<br>" +
+        "<b>String:</b>" + str + "<br>" +
+        "<b>Boolean:</b>" + bool + "<br>" +
+        "<b>Undefined:</b>" + undef + "<br>" +
+        "<b>Null:</b>" + n + "<br><br>" +
+        "<b>Escape Characters:</b><br>" + escapeText.replace(/\n/g, "<br>").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+
+        console.log("var a=", a);
+        console.log("let b=", b);
+        console.log("Escape Text:\n", escapeText);
+
+        window.alert("Check console and webpage output!");
+
+        document.write("<p>Displayed using document.write()</p>");
+    </script>
+</body>
+</html>

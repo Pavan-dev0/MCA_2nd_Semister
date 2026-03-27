@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Functions & RegEx Demo</title>
+</head>
+<body>
+    <h2>JavaScript Functions and regular expression</h2>
+    <p id="ouput"></p>
+    <script>
+        //----------FUNCTION WITHOUT PARAMETER 1------------------
+        function greet(){
+            return "Hello! This is a function without parameters.<br>;"
+        }
+        // ----------Function with Parameter----------------------
+        function square(num){
+            return "square of" +num+ "is:"+(num * num) +"<br>";
+        }
+        // ------------Regular Expressions -------------------------
+        function regexDemo(){
+            let text="Hello123 World_456";
+
+            let result="<b>Original Text:</b>"+text+"<br><br>";
+
+            //Match Digits
+            let digits = text.match(/[0-9]+/g);
+            result +="Digits[0-9]: "+digits+"<br>";
+
+            //Match Alphabets
+            let alphabets = text.match(/[a-zA-Z]+/g);
+            result+="Alphabets[a-zA-Z]: "+alphabets+"<br>";
+
+            let Wordchars=text.match(/\w+/g);
+            result+="Word_Characters: "+Wordchars+"<br>";
+
+            //match lowercase letters
+            let lowercase = text.match(/[a-z]+/g);
+            result+="Non-Digits [\\D]: " +nonDigits+"<br>";
+
+            let space=text.match(/\s/g);
+            result+="Whitespace [\\s]: "+space+"<br>";
+
+            let nonword=text.match(/\W+/g);
+            result+="Non-Word Characters [\\W]: "+nonWord+ "<br>";
+
+            return result;
+
+        }
+        // ------------- OUTPUT DISPLAY --------------------------
+
+        let output= "";
+        output +=greet();                   //function without
+        //parameter
+        output+=square(5);                  // function with
+        //parameter
+        output+="<br><b>Regular Expression Results :</b> <br>";
+        output+=regexDemo();                   //regex demo
+
+        document.getElementById("output").innerHTML=output;
+    </script>
+</body>
+</html>

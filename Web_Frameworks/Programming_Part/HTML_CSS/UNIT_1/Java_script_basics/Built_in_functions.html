@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>JavaScript Built-in Functions Demo</h2>
+    <p id="output"></p>
+
+    <script>
+        // isNaN(x) checks if the value is not a number
+        let checkNaN1 = isNaN("Hello");   // true
+        let checkNaN2 = isNaN("123");     // false
+        let checkNaN3 = isNaN("123abc");  // true
+
+        // toString() explicit vs implicit
+        let explicitStr = (100).toString();          // "100"
+        let implicitStr = "Number: " + 100;          // "Number: 100"
+
+        // parseInt() and parseFloat()
+        let intVal = parseInt("123.45");   // 123
+        let floatVal = parseFloat("123.45"); // 123.45
+
+        // typeof
+        let a = 10;
+        let b = "JS";
+        let c = true;
+
+        let typeA = typeof a; // "number"
+        let typeB = typeof b; // "string"
+        let typeC = typeof c; // "boolean"
+
+        // Date
+        let currentDate = new Date();
+        let dateStr = currentDate.toDateString();
+        let timeStr = currentDate.toLocaleTimeString();
+
+        // Output results
+        document.getElementById("output").innerHTML =
+            "<b>isNaN Examples:</b><br>" +
+            "isNaN('Hello'): " + checkNaN1 + "<br>" +
+            "isNaN('123'): " + checkNaN2 + "<br>" +
+            "isNaN('123abc'): " + checkNaN3 + "<br><br>" +
+
+            "<b>toString Examples:</b><br>" +
+            "Explicit (100).toString(): " + explicitStr + "<br>" +
+            "Implicit 'Number: ' + 100: " + implicitStr + "<br><br>" +
+
+            "<b>parseInt / parseFloat:</b><br>" +
+            "parseInt('123.45'): " + intVal + "<br>" +
+            "parseFloat('123.45'): " + floatVal + "<br><br>" +
+
+            "<b>typeof Examples:</b><br>" +
+            "typeof a (10): " + typeA + "<br>" +
+            "typeof b ('JS'): " + typeB + "<br>" +
+            "typeof c (true): " + typeC + "<br><br>" +
+
+            "<b>Date Examples:</b><br>" +
+            "Current Date: " + dateStr + "<br>" +
+            "Current Time: " + timeStr;
+
+            console.log("Date:",currentDate);
+
+            
+    </script>
+</body>
+</html>

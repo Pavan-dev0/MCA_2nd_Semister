@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript math functions demo</title>
+</head>
+<body>
+    <h2> Java Script Math and Trigonometric Functions</h2>
+    <!-- 
+    1.Math.sin(x)-> Returns sine (x in radians)
+    2.Math.cos(x)-> Returns cosine  
+    3.Math.floor(x)-> Rounds down
+    4. Math.ceil(x)-> Rounds up
+    5. Math.round(x)-> nearest integer
+    6. Math.max()/Math.min()-> Largest/Smallest_Value
+    7. Math.PI-> 3.14158
+    8. Math.abs(x) -> Absolute Value
+    9. Math.random(x)-> random number(0-1)
+    -->
+
+    <p id="result"></p>
+
+    <script>
+        let x=Math.PI/4; //45 degrees in radians
+        
+        //trigonometric Functions
+        let sine=Math.sin(x); 
+        let cosine=Math.cos(x); 
+        let roundVal=Math.round(4.7); // nearest integer
+
+        // Rounding Functions
+        let floorVal=Math.floor(4.7);
+        let ceilVal=Math.ceil(4.7);
+
+        // Max & Min
+        let maxVal=Math.max(10,20,5);
+        let minVal=Math.min(10,20,5);
+
+        // other Math functions
+        let piVal=Math.PI;
+        let power=Math.pow(8,2);
+        let sqrtVal=Math.sqrt(64);
+        let absVal=Math.abs(-4.7);
+
+        //Random Values
+        let randomFloat=Math.random(); //0 to 1
+        let randomInt=Math.floor(Math.random()*100); 
+
+        document.getElementById("result").innerHTML=
+        "<b>Trigonometric Functions:</b> <br>"+
+        "sin(45)="+sine+"<br>"+
+        "cos(45)="+cosine+"<br><br>"+
+
+        "<b> Rounding Functions:</b><br>"+
+        "Math.floor(4.7)="+floorVal+"<br>"+
+        "Math.ceil(4.7)="+ceilVal +"<br>"+
+        "Math.round(4.7)="+roundVal+"<br><br>"+
+        
+        "<b>Max & Min:</b><br>"+
+        "Max="+maxVal+"<br>"+
+        "Min="+minVal+"<br><br>"+
+        
+        "<b>Other Functions:</b><br>"+
+        "PI="+piVal+"<br>"+
+        "Power(8,2)="+power+"<br>"+
+        "Sqrt(64)="+sqrtVal+"<br>"+
+        "Abs(-4.7)="+absVal+"<br><br>"+
+        
+        "<b>Random Values:</b><br>"+
+        "Random Float="+randomFloat+"<br>"+
+        "Random Int (0-99)="+randomInt+"<br>";
+    </script>
+</body>
+</html>
