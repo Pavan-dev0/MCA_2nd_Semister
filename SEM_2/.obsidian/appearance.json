@@ -1,0 +1,11 @@
+{
+  "cssTheme": "Minimal",
+  "interfaceFontFamily": "Lato",
+  "textFontFamily": "Lora",
+  "enabledCssSnippets": [
+    "STYLE_THEME"
+  ],
+  "theme": "moonstone",
+  "accentColor": "#4a6fa5",
+  "monospaceFontFamily": "Latin Modern Sans Demi Cond"
+}

@@ -1,0 +1,221 @@
+{
+  "main": {
+    "id": "25d2ad68c80c81c1",
+    "type": "split",
+    "children": [
+      {
+        "id": "53c0a2ada32bce6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "58067dfe00454664",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled/Ai_ML.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Ai_ML"
+            }
+          },
+          {
+            "id": "ece7a0cc47e97399",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2nd_SEM/Web_Frameworks/WAF/Web Application Frameworks.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Web Application Frameworks"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9939aea049ea3398",
+    "type": "split",
+    "children": [
+      {
+        "id": "b7c6698a119d673c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "20c0682f38a49f33",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "3f33b6a8bde60ac1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "1add105be414d64e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "437e73f27f29a368",
+    "type": "split",
+    "children": [
+      {
+        "id": "f17e262499de4f02",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3d1be5d1cfb98fb4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Untitled/Ai_ML.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Ai_ML"
+            }
+          },
+          {
+            "id": "bb4076cd91d92019",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Untitled/Ai_ML.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Ai_ML"
+            }
+          },
+          {
+            "id": "91d7566619bdd82b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "b25487618638c840",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "8f22a9fea39b6b2e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2nd_SEM/Web_Frameworks/WAF/Web Application Frameworks.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Web Application Frameworks"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "ece7a0cc47e97399",
+  "lastOpenFiles": [
+    "Pasted image 20260329181624.png",
+    "Pasted image 20260329181435.png",
+    "Pasted image 20260329181414.png",
+    "Pasted image 20260329181135.png",
+    "Pasted image 20260329175831.png",
+    "Pasted image 20260329175717.png",
+    "Pasted image 20260329174732.png",
+    "Pasted image 20260329174638.png",
+    "2nd_SEM/Web_Frameworks/HTML.md",
+    "2nd_SEM/Web_Frameworks/HTTP and HTTPS.md",
+    "2nd_SEM/Web_Frameworks/WAF/Web Application Frameworks.md",
+    "Topic-Note-Template.md.md",
+    "2nd_SEM/Topic-Note-Template.md",
+    "Untitled/Ai_ML.md",
+    "2nd_SEM/Web_Frameworks/WAF",
+    "Untitled"
+  ]
+}
