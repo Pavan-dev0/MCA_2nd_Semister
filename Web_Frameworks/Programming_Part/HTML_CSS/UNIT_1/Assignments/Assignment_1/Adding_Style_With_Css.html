@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Times</title>
+
+    <!-- EXTERNAL CSS - Separate file -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <!-- INTERNAL CSS -->
+    <style>
+        /* INTERNAL CSS - Element Selector */
+        body {
+            margin: 0;
+            padding: 0;
+            /* remove 20px */
+            background-color: #e0e0e0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #newspaper-container {
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            background-color: white;
+            padding: 20px;
+            box-sizing: border-box;
+
+            /* REMOVE old border */
+            border: none;
+
+            /* 👇 Add side + bottom borders only */
+            border-left: 12px solid #4a4a4a;
+            border-right: 12px solid #4a4a4a;
+            border-bottom: 12px solid #4a4a4a;
+
+            /* 👇 Zigzag TOP BORDER */
+            background-image:
+                linear-gradient(135deg, #4a4a4a 10px, transparent 0),
+                linear-gradient(-135deg, #4a4a4a 10px, transparent 0);
+            background-size: 20px 20px;
+            background-repeat: repeat-x;
+            background-position: top;
+        }
+
+
+        /* INTERNAL CSS - Class Selector */
+        .header-title {
+            background-color: #d60000;
+            /* HEX color */
+            text-align: center;
+            padding: 25px 0;
+            margin-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        .header-title h1 {
+            color: white;
+            font-size: 110px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: bold;
+            padding-top: 25px;
+            margin: 0;
+            letter-spacing: 6px;
+        }
+
+        .sub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Archivo Black', sans-serif;
+
+            padding: 4px 0;
+            /* 👈 reduce this */
+            line-height: 1;
+            /* 👈 VERY IMPORTANT */
+
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+
+            margin-top: 10px;
+        }
+
+        /* INTERNAL CSS - Pseudo-class :hover */
+        .sub-header .website a {
+            font-size: 18px;
+            letter-spacing: 1px;
+            padding-left: 12px;
+
+        }
+
+        .sub-header .breaking {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .sub-header .price {
+            font-size: 20px;
+            font-weight: 900;
+            padding-right: 48px;
+        }
+
+        /* INTERNAL CSS - Pseudo-element ::first-letter */
+        .column p::first-letter {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* INTERNAL CSS - Group Selector */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* INTERNAL CSS - Float property for layout */
+        .sidebar {
+            float: right;
+            width: 32%;
+            margin-left: 3%;
+        }
+
+        .content-columns {
+            width: 63%;
+            float: left;
+        }
+
+        /* CSS PRECEDENCE DEMO - INTERNAL CSS (medium priority) */
+        /* This will override external CSS but be overridden by inline style */
+        #precedence-demo {
+            color: blue;
+            /* This will be overridden by inline style */
+            font-size: 13px;
+        }
+
+        /* Top decorative line */
+        .top-border {
+            height: 3px;
+            background-color: #333;
+            margin-bottom: 8px;
+        }
+
+        /* Website URL styling */
+        .sub-header .website a {
+            color: #fdfdfd;
+            font-weight: bold;
+        }
+        .p{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="newspaper-container">
+
+
+        <!-- Header with red background -->
+        <div class="header-title">
+            <h1>THE DAILY TIMES</h1>
+        </div>
+
+        <!-- Sub-header strip -->
+        <div class="sub-header">
+            <span class="website" style="color:white"><a href="#">www.schoolnews.com</a></span>
+            <span class="breaking">LATEBREAKING and EXCLUSIVE</span>
+            <span class="price"
+                style="font-family:Archivo Black, sans-serif; font-weight:5000; letter-spacing: 0.5px; font-size:medium">
+                $2.00
+            </span>
+        </div>
+
+        <!-- Main headline -->
+        <h2 class="main-headline">PLACE YOUR HEADLINE HERE</h2>
+
+        <!-- Content area -->
+        <div class="content-wrapper">
+
+            <!-- Text columns -->
+            <div class="content-columns">
+
+                <!-- Left column -->
+                <div class="column left-column">
+                    <h3 class="subheading">Bibbity Bobbity Boo –</h3>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever whatever Blah, blah, yack yack, yada yada,
+                        whatever whatever</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever
+                        whatever</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada</p>
+
+                    <!-- CSS PRECEDENCE DEMONSTRATION -->
+                    <!-- This paragraph has: External CSS (green), Internal CSS (blue), and Inline CSS (red) -->
+                    <!-- INLINE CSS wins (highest priority) - color will be red -->
+                    <p id="precedence-demo" class="precedence-class"
+                        style="color: rgb(0, 0, 0);padding-right: 24px; padding-left: 23px;olor:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah,
+                        yack yack, yada yada, whatever whatever Blah, blah, yack yack, yada yada, whatever whatever</p>
+
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever
+                        whatever</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif"">Blah, blah, yack yack, yada</p>
+                </div>
+
+                <!-- Right column -->
+                <div class="column right-column">
+                    <h3 class="subheading">Bibbity Bobbity Bco –</h3>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever whatever Blah, blah, yack yack, yada yada,
+                        whatever whatever</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever
+                        whatever</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada yada, whatever
+                        whatever Blah, blah, yack yack, yada yada, whatever
+                        whatever</p>
+                    <p style="padding-right: 24px; padding-left: 23px;color:#000;font-weight: bold;font-family:Arial, Helvetica, sans-serif">Blah, blah, yack yack, yada</p>
+                </div>
+
+            </div>
+
+            <!-- Right sidebar -->
+            <div class="sidebar">
+                <!-- Image box placeholder -->
+                <div class="image-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnbhfebFSRnfE8OZlnc44JWKA9MUZsnVgXwA&s"
+                        alt="News Image">
+                </div>
+
+                <!-- Coupon box -->
+                <div class="coupon-box">
+                    <p class="coupon-text">- Coupon -</p>
+                </div>
+            </div>
+
+            <!-- Clear floats -->
+            <div style="clear: both;"></div>
+        </div>
+
+        <!-- Footer credit -->
+        <div class="footer-credit">
+            ICS Computer Lab icsfornia.com
+        </div>
+
+    </div>
+
+</body>
+
+</html>

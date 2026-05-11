@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCA — First Semester</title>
+  <link rel="stylesheet" href="mca-style.css" />
+</head>
+<body>
+
+<!-- ════════════ HEADER ════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <p class="header-eyebrow">Academic Programme · 2025–26</p>
+      <h1 class="header-title">MCA <span>First Semester</span></h1>
+      <p class="header-sub">Master of Computer Applications — Course Details</p>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">Subjects <strong>05</strong></div>
+      <div class="stat-pill">Total Credits <strong>20</strong></div>
+      <div class="stat-pill">Duration <strong>6 Months</strong></div>
+    </div>
+  </div>
+  <div class="header-gold-bar"></div>
+</header>
+
+<!-- ════════════ BODY ════════════ -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-head"><p>Subject List</p></div>
+      <button class="subject-btn active" onclick="show('s1', this)">
+        <span class="num">01</span> Python Programming
+      </button>
+      <button class="subject-btn" onclick="show('s2', this)">
+        <span class="num">02</span> Data Structures
+      </button>
+      <button class="subject-btn" onclick="show('s3', this)">
+        <span class="num">03</span> Database Systems
+      </button>
+      <button class="subject-btn" onclick="show('s4', this)">
+        <span class="num">04</span> Computer Networks
+      </button>
+      <button class="subject-btn" onclick="show('s5', this)">
+        <span class="num">05</span> Discrete Mathematics
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- ── SUBJECT 1 ── -->
+    <div id="s1" class="subject-panel active">
+      <div class="subject-card">
+        <div class="subject-hero">
+          <div class="subject-tag">Subject 01 · Core</div>
+          <h2>Problem Solving &amp;<br>Python Programming</h2>
+          <p>Algorithms, data types, control flow, functions and object-oriented design in Python.</p>
+          <div class="credit-badge">
+            <span class="num">4</span>
+            <span class="lbl">Credits</span>
+          </div>
+        </div>
+        <div class="subject-body">
+          <img
+            src="https://imgcdn.stablediffusionweb.com/2024/10/8/65b72d79-7854-4c3b-854e-98cbb8a349b7.jpg"
+            alt="Python" class="subject-img"
+          />
+          <p class="subject-desc">
+            An introduction to algorithmic thinking and structured programming using Python. Students learn to design efficient solutions to computational problems through hands-on coding exercises covering the full language core.
+          </p>
+          <p class="chapters-label">Chapters</p>
+          <div class="chapters-grid">
+            <div class="chapter-tile">
+              <span class="ch-num">CH 01</span>
+              <div><div class="ch-text">Introduction to Computing</div><div class="ch-sub">Algorithms, flowcharts, pseudocode</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 02</span>
+              <div><div class="ch-text">Python Fundamentals</div><div class="ch-sub">Variables, types, operators, I/O</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 03</span>
+              <div><div class="ch-text">Control Structures</div><div class="ch-sub">if, for, while, match-case</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 04</span>
+              <div><div class="ch-text">Functions &amp; Modules</div><div class="ch-sub">Scope, recursion, exception handling</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SUBJECT 2 ── -->
+    <div id="s2" class="subject-panel">
+      <div class="subject-card">
+        <div class="subject-hero">
+          <div class="subject-tag">Subject 02 · Core</div>
+          <h2>Data Structures<br>&amp; Algorithms</h2>
+          <p>Linear and non-linear structures, complexity analysis and algorithm design strategies.</p>
+          <div class="credit-badge">
+            <span class="num">4</span>
+            <span class="lbl">Credits</span>
+          </div>
+        </div>
+        <div class="subject-body">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz3U0OY2aukn8tTBDSbiHsH03Jqdg3XzCn3w&s"
+            alt="Data_Structure" class="subject-img"
+          />
+          <p class="subject-desc">
+            Comprehensive study of data organisation and manipulation strategies. Covers time-space complexity, classic sorting and searching algorithms, and recursive problem solving — the foundation of competitive programming.
+          </p>
+          <p class="chapters-label">Chapters</p>
+          <div class="chapters-grid">
+            <div class="chapter-tile">
+              <span class="ch-num">CH 01</span>
+              <div><div class="ch-text">Arrays &amp; Linked Lists</div><div class="ch-sub">Singly, doubly, circular</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 02</span>
+              <div><div class="ch-text">Stacks, Queues &amp; Deques</div><div class="ch-sub">Applications and implementations</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 03</span>
+              <div><div class="ch-text">Trees &amp; Binary Search</div><div class="ch-sub">BST, AVL, Heap, Trie</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 04</span>
+              <div><div class="ch-text">Graphs &amp; Sorting</div><div class="ch-sub">BFS, DFS, QuickSort, MergeSort</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ── SUBJECT 3 ── -->
+    <div id="s3" class="subject-panel">
+      <div class="subject-card">
+        <div class="subject-hero">
+          <div class="subject-tag">Subject 03 · Core</div>
+          <h2>Database Management<br>Systems</h2>
+          <p>Relational model, SQL, normalisation, transactions and query optimisation.</p>
+          <div class="credit-badge">
+            <span class="num">4</span>
+            <span class="lbl">Credits</span>
+          </div>
+        </div>
+        <div class="subject-body">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/007/132/462/non_2x/download-this-premium-isometric-icon-of-database-management-vector.jpg"
+            alt="DataBase_Management" class="subject-img"
+          />
+          <p class="subject-desc">
+            Covers the theory and practice of organising, storing and retrieving data efficiently. Students gain deep proficiency in SQL and learn to design robust, normalised schemas for real-world applications.
+          </p>
+          <p class="chapters-label">Chapters</p>
+          <div class="chapters-grid">
+            <div class="chapter-tile">
+              <span class="ch-num">CH 01</span>
+              <div><div class="ch-text">ER Model &amp; Relational Model</div><div class="ch-sub">Entities, relationships, keys</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 02</span>
+              <div><div class="ch-text">SQL — DDL, DML, DCL</div><div class="ch-sub">Joins, subqueries, views</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 03</span>
+              <div><div class="ch-text">Normalisation</div><div class="ch-sub">1NF → 2NF → 3NF → BCNF</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 04</span>
+              <div><div class="ch-text">Transactions &amp; Recovery</div><div class="ch-sub">ACID, concurrency control</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SUBJECT 4 ── -->
+    <div id="s4" class="subject-panel">
+      <div class="subject-card">
+        <div class="subject-hero">
+          <div class="subject-tag">Subject 04 · Core</div>
+          <h2>Computer<br>Networks</h2>
+          <p>Network architecture, layered protocols and internet communication fundamentals.</p>
+          <div class="credit-badge">
+            <span class="num">4</span>
+            <span class="lbl">Credits</span>
+          </div>
+        </div>
+        <div class="subject-body">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBukpRuYEgaEiQ_ptjMuAkJV2mcMcPoyxz-Q&s"
+            alt="DataBase_Management" class="subject-img"
+          />
+          <p class="subject-desc">
+            Study of data communication and computer networks from the physical layer up to the application layer. Special focus on TCP/IP, routing, security principles and emerging network paradigms.
+          </p>
+          <p class="chapters-label">Chapters</p>
+          <div class="chapters-grid">
+            <div class="chapter-tile">
+              <span class="ch-num">CH 01</span>
+              <div><div class="ch-text">OSI &amp; TCP/IP Models</div><div class="ch-sub">Layer functions and interactions</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 02</span>
+              <div><div class="ch-text">Data Link Layer</div><div class="ch-sub">Framing, MAC, error control</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 03</span>
+              <div><div class="ch-text">Network &amp; Transport Layer</div><div class="ch-sub">IP addressing, TCP vs UDP</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 04</span>
+              <div><div class="ch-text">Application Protocols</div><div class="ch-sub">HTTP, DNS, SMTP, FTP, SSH</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SUBJECT 5 ── -->
+    <div id="s5" class="subject-panel">
+      <div class="subject-card">
+        <div class="subject-hero">
+          <div class="subject-tag">Subject 05 · Core</div>
+          <h2>Discrete Mathematics<br>&amp; Logic</h2>
+          <p>Mathematical foundations essential for computing — logic, sets, graphs and combinatorics.</p>
+          <div class="credit-badge">
+            <span class="num">4</span>
+            <span class="lbl">Credits</span>
+          </div>
+        </div>
+        <div class="subject-body">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBIlry9BLV1mZmsCRbPsWyeAyeAwkfzd-N3w&s"
+            alt="DiscreteMathematics" class="subject-img"
+          />
+          <p class="subject-desc">
+            Equips students with the mathematical tools underlying computer science: formal logic for reasoning about programs, combinatorics for algorithm analysis, and graph theory for network modelling.
+          </p>
+          <p class="chapters-label">Chapters</p>
+          <div class="chapters-grid">
+            <div class="chapter-tile">
+              <span class="ch-num">CH 01</span>
+              <div><div class="ch-text">Propositional Logic</div><div class="ch-sub">Truth tables, tautologies, proofs</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 02</span>
+              <div><div class="ch-text">Set Theory &amp; Relations</div><div class="ch-sub">Functions, equivalence, partial orders</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 03</span>
+              <div><div class="ch-text">Combinatorics</div><div class="ch-sub">Permutations, combinations, pigeonhole</div></div>
+            </div>
+            <div class="chapter-tile">
+              <span class="ch-num">CH 04</span>
+              <div><div class="ch-text">Graph Theory</div><div class="ch-sub">Paths, trees, Euler &amp; Hamiltonian</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SEMESTER OVERVIEW TABLE ── -->
+    
+
+  </main>
+</div>
+
+<!-- ════════════ FOOTER ════════════ -->
+<!-- <footer class="site-footer">
+  <p>MCA Programme &nbsp;·&nbsp; <span>First Semester</span> &nbsp;·&nbsp; Academic Year 2024–25</p>
+</footer> -->
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.subject-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

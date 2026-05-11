@@ -27,16 +27,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2nd_SEM/Web_Frameworks/WAF/Web Application Frameworks.md",
-                "mode": "preview",
+                "file": "2nd_SEM/Machine_Learning/The Key_Formulas.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Web Application Frameworks"
+              "title": "The Key_Formulas"
+            }
+          },
+          {
+            "id": "a3aa46204c78b37a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2nd_SEM/ANAKI_PROTO/Protocol.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Protocol"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -93,8 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "437e73f27f29a368",
@@ -172,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2nd_SEM/Web_Frameworks/WAF/Web Application Frameworks.md",
+                "file": "2nd_SEM/Machine_Learning/Introduction To Artificial Intelligence.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Web Application Frameworks"
+              "title": "Outline of Introduction To Artificial Intelligence"
             }
           }
         ],
@@ -186,7 +199,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,23 +213,53 @@
       "bases:Create new base": false
     }
   },
-  "active": "ece7a0cc47e97399",
+  "active": "a3aa46204c78b37a",
   "lastOpenFiles": [
-    "Pasted image 20260329181624.png",
-    "Pasted image 20260329181435.png",
-    "Pasted image 20260329181414.png",
-    "Pasted image 20260329181135.png",
-    "Pasted image 20260329175831.png",
-    "Pasted image 20260329175717.png",
-    "Pasted image 20260329174732.png",
-    "Pasted image 20260329174638.png",
-    "2nd_SEM/Web_Frameworks/HTML.md",
-    "2nd_SEM/Web_Frameworks/HTTP and HTTPS.md",
-    "2nd_SEM/Web_Frameworks/WAF/Web Application Frameworks.md",
-    "Topic-Note-Template.md.md",
-    "2nd_SEM/Topic-Note-Template.md",
-    "Untitled/Ai_ML.md",
-    "2nd_SEM/Web_Frameworks/WAF",
-    "Untitled"
+    "2nd_SEM/CTF/ESSENTIAL COMMANDS.md",
+    "2nd_SEM/ANAKI_PROTO/Protocol.md",
+    "2nd_SEM/ANAKI_PROTO",
+    "2nd_SEM/Scalable_Data_Processing/UNIT_3/assingment_08_05.md",
+    "2nd_SEM/CTF",
+    "2nd_SEM/Scalable_Data_Processing/Untitled.md",
+    "2nd_SEM/Scalable_Data_Processing/UNIT_3/Steam_Processing Apache Flink.md",
+    "2nd_SEM/Machine_Learning/Classifier.md",
+    "2nd_SEM/Scalable_Data_Processing/UNIT_3",
+    "2nd_SEM/Machine_Learning/The Key_Formulas.md",
+    "2nd_SEM/Machine_Learning/Introduction To Artificial Intelligence.md",
+    "2nd_SEM/Machine_Learning/AIML_numericals.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/Assignment01.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/RDD Transformation and action more notes.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/Py_Spark_Session.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/Assignment_2.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/SS_April_24th.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/SQL_Things_Assignment.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/SQL_THINGS.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/Sql_Creation.md",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2/JOINS.md",
+    "2nd_SEM/Web_Frameworks/UNIT_1/ISA_Prep.md",
+    "Pasted image 20260429194845.png",
+    "2nd_SEM/Web_Frameworks/UNIT_1/The Programming Part.md",
+    "2nd_SEM/Web_Frameworks/UNIT_1/Table.md",
+    "2nd_SEM/Web_Frameworks/UNIT_1/HTTP and HTTPS.md",
+    "2nd_SEM/Web_Frameworks/UNIT_1/HTML.md",
+    "2nd_SEM/Web_Frameworks/UNIT_1/Assignment_WAF.md",
+    "Pasted image 20260429122134.png",
+    "Pasted image 20260429122121.png",
+    "Pasted image 20260429122028.png",
+    "Pasted image 20260429122016.png",
+    "Pasted image 20260429121951.png",
+    "Pasted image 20260429121937.png",
+    "Pasted image 20260429121917.png",
+    "Pasted image 20260429121826.png",
+    "Pasted image 20260429121811.png",
+    "2nd_SEM/Computer_Networks/Notes_Continuation.md",
+    "2nd_SEM/Computer_Networks/Key_Notes and formulas for the ISA 1.md",
+    "2nd_SEM/ada",
+    "2nd_SEM/Web_Frameworks/UNIT_2",
+    "2nd_SEM/Web_Frameworks/UNIT_1",
+    "2nd_SEM/Web_Frameworks/UNIT_2/REACT_JS",
+    "2nd_SEM/SEMINAR",
+    "2nd_SEM/Scalable_Data_Processing/Unit_2",
+    "2nd_SEM/Scalable_Data_Processing"
   ]
 }

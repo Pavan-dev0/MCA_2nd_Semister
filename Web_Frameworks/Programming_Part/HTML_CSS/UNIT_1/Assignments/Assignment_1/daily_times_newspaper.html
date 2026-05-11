@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Daily Times</title>
+
+  <!-- Google Fonts (External CSS resource) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet" />
+
+  <!-- ══════════════════════════════════════════════
+       DOCUMENT-LEVEL CSS  (selector showcase)
+       ══════════════════════════════════════════════ -->
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --ink:        #1a1008;
+      --paper:      #f5f0e8;
+      --aged:       #e8dfc8;
+      --rule:       #2b1a00;
+      --red:        #c0392b;          /* hex  */
+      --red-soft:   rgba(192,57,43,.15); /* rgba */
+      --gold:       hsl(38, 72%, 42%);   /* hsl  */
+      --gold-light: hsla(38, 72%, 42%, .25); /* hsla */
+      --muted:      rgb(110, 95, 75);    /* rgb  */
+      --col-gap:    1.4rem;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #cfc7b0;
+      font-family: 'Source Serif 4', serif;
+      color: var(--ink);
+      /* background texture with repeating gradient */
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 24px, rgba(0,0,0,.04) 24px, rgba(0,0,0,.04) 25px
+      );
+    }
+
+    /* ── Page wrapper ── */
+    #newspaper {
+      max-width: 1450px;
+      margin: 2rem auto;
+      background: var(--paper);
+      border: 3px double var(--rule);
+      box-shadow: 6px 6px 0 #8c7a5e, 12px 12px 20px rgba(0,0,0,.45);
+      padding: 0 0 2rem;
+    }
+
+    /* ════════════════════════════════
+       MASTHEAD
+    ════════════════════════════════ */
+    #masthead {
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 1rem 2rem .6rem;
+      border-bottom: 5px solid var(--rule);
+      position: relative;
+    }
+
+    #masthead .edition-bar {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Lora', serif;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      border-bottom: 1px solid rgba(255,255,255,.35);
+      padding-bottom: .4rem;
+      margin-bottom: .5rem;
+    }
+
+    #masthead h1 {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      letter-spacing: .04em;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 2px 2px 0 rgba(0,0,0,.4);
+    }
+
+    #masthead .tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: .8rem;
+      letter-spacing: .25em;
+      color: rgba(255,255,255,.9);
+      margin-top: .3rem;
+    }
+
+    /* ── Ticker / breaking news bar ── */
+    #ticker {
+      background: var(--rule);
+      color: var(--gold);
+      font-family: 'Lora', serif;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      display: flex;
+      gap: 1rem;
+      overflow: hidden;
+    }
+    #ticker span.label {
+      background: var(--red);
+      color: #fff;
+      padding: .1rem .5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    #ticker .scroll-text {
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee {
+      from { transform: translateX(100%); }
+      to   { transform: translateX(-100%); }
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-family: 'Lora', serif;
+      font-size: .65rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--red);
+      border-top: 3px solid var(--red);
+      border-bottom: 1px solid var(--red);
+      padding: .25rem .5rem;
+      margin: 1rem 2rem .8rem;
+    }
+
+    /* ════════════════════════════════
+       MAIN CONTENT GRID
+    ════════════════════════════════ */
+    #content {
+      padding: 0 2rem;
+    }
+
+    /* Horizontal rule lines */
+    hr.column-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: .8rem 0;
+    }
+    hr.thick {
+      border-top: 3px double var(--rule);
+      margin: 1rem 0;
+    }
+
+    /* ── Headline article (top story) ── */
+    #top-story {
+      border-bottom: 3px double var(--rule);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #top-story h2.headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-align: center;
+      margin-bottom: .4rem;
+      color: var(--ink);
+    }
+
+    #top-story .sub-headline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+
+    /* ── Float image ── */
+    .img-float-left {
+      float: left;
+      margin: 0 1.2rem 0.8rem 0;
+      border: 3px solid var(--rule);
+      width: 200px;
+    }
+    .img-float-right {
+      float: right;
+      margin: 0 0 0.8rem 1.2rem;
+      border: 3px solid var(--rule);
+      width: 180px;
+    }
+    .img-float-left img,
+    .img-float-right img {
+      width: 100%;
+      display: block;
+      filter: sepia(.4) contrast(1.05);
+    }
+    .img-caption {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: .65rem;
+      color: var(--muted);
+      text-align: center;
+      padding: .25rem .3rem;
+      background: var(--aged);
+      border-top: 1px solid var(--rule);
+    }
+
+    .clearfix::after { content: ''; display: table; clear: both; }
+
+    /* ── Three-column layout ── */
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1fr;
+      gap: var(--col-gap);
+      margin-top: .8rem;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--col-gap);
+      margin-top: .8rem;
+    }
+
+    .col {
+      border-right: 1px solid #b0a090;
+      padding-right: var(--col-gap);
+    }
+    .col:last-child { border-right: none; padding-right: 0; }
+
+    /* ── Article headlines ── */
+    h3.art-head {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.2;
+      margin-bottom: .3rem;
+      color: var(--ink);
+    }
+    h4.art-subhead {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .4rem;
+    }
+
+    /* ── Body text ── */
+    p.body-text {
+      font-family: 'Source Serif 4', serif;
+      font-size: .82rem;
+      line-height: 1.65;
+      text-align: justify;
+      margin-bottom: .5rem;
+      color: var(--ink);
+    }
+
+    /* ── Drop-cap ── */
+    p.drop-cap::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      float: left;
+      line-height: .75;
+      margin: .1rem .35rem 0 0;
+      color: var(--red);
+    }
+
+    /* ── Pull quote ── */
+    blockquote.pull-quote {
+      border-left: 4px solid var(--red);
+      border-right: 4px solid var(--red);
+      margin: .8rem 0;
+      padding: .6rem .9rem;
+      background: var(--red-soft);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--red);
+      line-height: 1.4;
+    }
+
+    /* ── Byline ── */
+    .byline {
+      font-family: 'Lora', serif;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid var(--muted);
+      border-bottom: 1px solid var(--muted);
+      padding: .2rem 0;
+      margin-bottom: .5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── Advertorial / coupon box ── */
+    .ad-box {
+      border: 3px double var(--gold);
+      background: var(--gold-light);
+      padding: .7rem .9rem;
+      text-align: center;
+      margin-top: .8rem;
+    }
+    .ad-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--rule);
+      text-decoration: underline;
+      text-decoration-style: double;
+    }
+    .ad-box p {
+      font-size: .7rem;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: .3rem;
+    }
+    .coupon {
+      display: inline-block;
+      border: 2px dashed var(--rule);
+      padding: .3rem .7rem;
+      margin-top: .5rem;
+      font-family: 'Source Serif 4', serif;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--red);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Weather box ── */
+    .weather-box {
+      background: var(--aged);
+      border: 1px solid #b0a090;
+      padding: .6rem;
+      font-family: 'Source Serif 4', serif;
+      font-size: .75rem;
+    }
+    .weather-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: .85rem;
+      border-bottom: 1px solid #b0a090;
+      margin-bottom: .4rem;
+      padding-bottom: .2rem;
+    }
+    .weather-box ul { list-style: none; line-height: 1.8; }
+
+    /* ── LINKS & PSEUDO CLASSES ── */
+    a {
+      color: var(--red);
+      text-decoration: none;
+      font-style: italic;
+    }
+    a:link    { color: var(--red); }
+    a:visited { color: hsl(0, 40%, 40%); text-decoration: line-through; }
+    a:hover   { color: var(--gold); text-decoration: underline; }
+    a:active  { color: #000; background: var(--gold-light); }
+
+    /* ── INPUT PSEUDO CLASSES ── */
+    input[type="text"], input[type="email"] {
+      border: 1px solid #b0a090;
+      background: var(--aged);
+      color: var(--ink);
+      padding: .35rem .5rem;
+      font-family: 'Lora', serif;
+      font-size: .8rem;
+      width: 100%;
+      margin-top: .3rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px var(--red-soft);
+    }
+    input[type="text"]:hover,
+    input[type="email"]:hover {
+      border-color: var(--gold);
+    }
+    input::placeholder { color: var(--muted); font-style: italic; }
+
+    button.subscribe-btn {
+      margin-top: .5rem;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: .4rem 1rem;
+      font-family: 'Lora', serif;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      text-transform: uppercase;
+    }
+    button.subscribe-btn:hover  { background: var(--rule); }
+    button.subscribe-btn:active { transform: scale(.97); }
+
+    /* ── FOOTER ── */
+    #footer {
+      border-top: 3px double var(--rule);
+      margin: 1.5rem 2rem 0;
+      padding-top: .8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    #footer .footer-col { flex: 1; min-width: 160px; }
+    #footer h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: .8rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: .2rem;
+      margin-bottom: .4rem;
+      letter-spacing: .06em;
+    }
+    #footer ul { list-style: none; }
+    #footer ul li {
+      font-size: .72rem;
+      font-family: 'Source Serif 4', serif;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    #footer ul li a { font-style: normal; font-size: .72rem; }
+    .footer-copy {
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: .65rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      padding: 0 2rem;
+    }
+
+    /* ── Stylesheet precedence demo ── */
+    p#precedence-demo {
+      /* Document-level style → red */
+      color: var(--red);
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: .8rem;
+      padding: .4rem .6rem;
+      border: 1px dashed var(--red);
+      background: var(--red-soft);
+      margin-top: .5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .three-col, .two-col { grid-template-columns: 1fr; }
+      .col { border-right: none; border-bottom: 1px solid #b0a090; padding-bottom: .8rem; padding-right: 0; }
+      .img-float-left, .img-float-right { width: 130px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="newspaper">
+
+  <!-- ══════════════ MASTHEAD ══════════════ -->
+  <header id="masthead">
+    <div class="edition-bar">
+      <span>Vol. CXLVII · No. 52</span>
+      <span>★ LATE BREAKING &amp; EXCLUSIVE ★</span>
+      <span>Price: ₹5.00</span>
+    </div>
+    <!-- INLINE style for one-off demo -->
+    <h1 style="text-shadow: 3px 3px 6px rgba(0,0,0,.5);">The Daily Times</h1>
+    <p class="tagline">Truth in Every Column · Founded 1878</p>
+  </header>
+
+  <!-- ══════════════ TICKER ══════════════ -->
+  <div id="ticker">
+    <span class="label">Breaking</span>
+    <span class="scroll-text">
+      Global summit concludes with landmark climate accord &nbsp;●&nbsp;
+      Stock markets rally on positive trade data &nbsp;●&nbsp;
+      Scientists unveil breakthrough in quantum computing &nbsp;●&nbsp;
+      City council approves new urban green spaces &nbsp;●&nbsp;
+      Champions League semi-finals draw announced
+    </span>
+  </div>
+
+  <!-- ══════════════ CONTENT ══════════════ -->
+  <main id="content">
+
+    <div class="section-label">Today's Edition — Wednesday, April 1, 2026</div>
+
+    <!-- TOP STORY -->
+    <article id="top-story">
+      <h2 class="headline">World Leaders Forge Historic Green Energy Pact at Global Summit</h2>
+      <p class="sub-headline">Seventy nations pledge carbon neutrality by 2040 — experts call it the most ambitious accord in decades</p>
+      <hr class="column-rule" />
+
+      <div class="three-col clearfix">
+
+        <!-- COL 1 -->
+        <div class="col">
+          <div class="byline">
+            <span>By Margaret Ellis, World Editor</span>
+            <span>April 1, 2026</span>
+          </div>
+          <p class="body-text drop-cap">
+            Seventy world leaders gathered in Geneva this week and signed the most sweeping
+            environmental agreement in history, committing their nations to full carbon
+            neutrality no later than the year 2040. The accord, brokered over four intense
+            days of negotiations, marks a turning point that climate scientists have described
+            as "the last realistic window" for averting catastrophic warming.
+          </p>
+          <p class="body-text">
+            The pact carries binding financial penalties for nations that fail to meet interim
+            benchmarks set every three years. A new independent monitoring body, headquartered
+            in Copenhagen, will publish quarterly compliance reports accessible to the public.
+          </p>
+          <blockquote class="pull-quote">
+            "This is not a promise — it is a legally binding obligation on behalf of future generations."
+          </blockquote>
+        </div>
+
+        <!-- COL 2 (centre, with image) -->
+        <div class="col clearfix">
+          <div class="img-float-left">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80" alt="World Leaders at Geneva Summit" />
+            <p class="img-caption">Delegates sign the accord in Geneva — April 2026</p>
+          </div>
+          <p class="body-text">
+            Emerging economies secured a dedicated fund of $800 billion over fifteen years to
+            accelerate their own green transitions, a key sticking point that nearly collapsed
+            the talks on the third day. India and Brazil — both of whom had previously resisted
+            binding terms — reversed course after the fund's structure was finalised.
+          </p>
+          <p class="body-text">
+            Renewable energy executives from more than forty corporations signed a parallel
+            industry pledge to double solar and wind capacity by 2032, providing the private
+            sector backbone the agreement requires.
+            <a href="#read-more">Read the full analysis →</a>
+          </p>
+          <p class="body-text">
+            Critics from fossil-fuel producing nations argue the timeline is
+            unrealistic, warning of economic dislocations if the transition is forced too
+            quickly. "Jobs and livelihoods matter," said one delegate who asked not to be named.
+          </p>
+        </div>
+
+        <!-- COL 3 -->
+        <div class="col">
+          <div class="byline">
+            <span>Related Reports</span>
+          </div>
+          <h3 class="art-head">Markets React With Cautious Optimism</h3>
+          <p class="body-text">
+            Green-energy indices surged 4.2% on Monday morning as traders priced in
+            long-term contracts for solar panel manufacturing and battery storage.
+          </p>
+          <hr class="column-rule" />
+          <h3 class="art-head">Scientists Applaud, Urge Vigilance</h3>
+          <p class="body-text">
+            The IPCC called the accord a "necessary but not sufficient" step, noting
+            that enforcement will determine whether targets translate into real emission cuts.
+          </p>
+          <hr class="column-rule" />
+
+          <!-- Weather box -->
+          <div class="weather-box">
+            <h4>☁ Today's Weather</h4>
+            <ul>
+              <li>Chennai — 34°C, Partly Cloudy</li>
+              <li>Mumbai — 31°C, Humid</li>
+              <li>Delhi — 28°C, Clear Skies</li>
+              <li>Bengaluru — 26°C, Light Showers</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- end .three-col -->
+    </article>
+
+    <hr class="thick" />
+
+    <!-- LOWER STORIES -->
+    <div class="two-col">
+
+      <!-- Story 2 -->
+      <div class="col">
+        <div class="section-label" style="margin: 0 0 .6rem;">Technology</div>
+        <h3 class="art-head">Quantum Leap: New Chip Solves Problems in Seconds That Would Take Supercomputers Millennia</h3>
+        <h4 class="art-subhead">By Raj Patel, Science Correspondent</h4>
+
+        <div class="img-float-right" style="width:150px;">
+          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=300&q=80" alt="Quantum Chip" />
+          <p class="img-caption">The 1,024-qubit processor unveiled Tuesday</p>
+        </div>
+
+        <p class="body-text drop-cap">
+          Researchers at a Silicon Valley laboratory revealed a 1,024-qubit quantum processor
+          capable of executing complex optimisation problems in under four seconds — problems that
+          would stump today's most powerful classical computers for thousands of years.
+        </p>
+        <p class="body-text">
+          The implications for cryptography, drug discovery, and logistics are profound.
+          Financial regulators have already convened an emergency working group to assess
+          the risk to current encryption standards. <a href="#quantum">Learn more</a>
+        </p>
+
+        <!-- Stylesheet precedence demo paragraph -->
+        <p id="precedence-demo" style="color: hsl(220,70%,40%);">
+          ★ CSS Precedence Demo: This paragraph has a <em>Document-level</em> rule setting
+          colour to red, but an <em>Inline</em> style overrides it to blue — inline always wins.
+        </p>
+      </div>
+
+      <!-- Story 3 + subscribe form -->
+      <div class="col">
+        <div class="section-label" style="margin: 0 0 .6rem;">Sports &amp; Culture</div>
+        <h3 class="art-head">The Art World's Billion-Dollar Heist That Never Was</h3>
+        <h4 class="art-subhead">By Clara Voss, Arts &amp; Culture</h4>
+
+        <p class="body-text drop-cap">
+          An elaborate scheme to steal three Impressionist masterworks from the Louvre was foiled
+          by an unlikely alliance of a night-shift janitor, an AI surveillance system, and a
+          retired Interpol detective on vacation in Paris. The would-be thieves had spent eighteen
+          months tunnelling beneath the Left Bank.
+        </p>
+        <p class="body-text">
+          Museum director Henri Fontaine praised the outcome as "a victory for vigilance and
+          human intuition". The suspects face charges under three jurisdictions.
+          <a href="#heist">Full story</a> · <a href="#gallery">See photos</a>
+        </p>
+
+        <hr class="column-rule" />
+
+        <!-- SUBSCRIBE FORM — input pseudo-classes demo -->
+        <div style="margin-top:.8rem;">
+          <h4 style="font-family:'Playfair Display',serif; font-size:.9rem; margin-bottom:.4rem;">
+            📰 Subscribe to The Daily Times
+          </h4>
+          <label style="font-family:'Lora',serif; font-size:.72rem; color:var(--muted);">
+            Your Name
+            <input type="text" placeholder="e.g. Margaret Ellis" />
+          </label>
+          <label style="font-family:'Lora',serif; font-size:.72rem; color:var(--muted); margin-top:.4rem; display:block;">
+            Email Address
+            <input type="email" placeholder="you@example.com" />
+          </label>
+          <button class="subscribe-btn">Subscribe Now</button>
+          <p style="font-size:.62rem; font-family:'Lora',serif; font-style:italic; color:var(--muted); margin-top:.3rem;">
+            Hover over the inputs to see colour change · Focus to see glow (pseudo-class demo)
+          </p>
+        </div>
+
+        <!-- Ad box -->
+        <div class="ad-box">
+          <h4>Grand Emporium Sale</h4>
+          <p>Finest goods at unbeatable prices. This week only — 30% off all imports.</p>
+          <span class="coupon">Coupon: TIMES30</span>
+        </div>
+      </div>
+
+    </div><!-- end .two-col -->
+
+  </main>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer id="footer">
+    <div class="footer-col">
+      <h5>News Sections</h5>
+      <ul>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Science</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Arts &amp; Life</h5>
+      <ul>
+        <li><a href="#">Culture</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Food &amp; Drink</a></li>
+        <li><a href="#">Books</a></li>
+        <li><a href="#">Sport</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About</h5>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Archive</a></li>
+        <li><a href="#">Corrections</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>CSS Feature Index</h5>
+      <ul>
+        <li>Inline, Document &amp; External styles ✓</li>
+        <li>Element, Class, ID selectors ✓</li>
+        <li>Pseudo-classes (:hover, :focus, :link…) ✓</li>
+        <li>Float &amp; clear ✓</li>
+        <li>RGB, RGBA, HSL, HSLA, Hex ✓</li>
+        <li>Borders, Margin, Padding ✓</li>
+        <li>Text-decoration, Alignment ✓</li>
+        <li>px, rem, em, % units ✓</li>
+        <li>Fonts: Playfair, Lora, Source Serif ✓</li>
+      </ul>
+    </div>
+  </footer>
+  <p class="footer-copy">© 2026 The Daily Times Publishing Co. · All Rights Reserved · Established 1878 · Chennai, India</p>
+
+</div><!-- end #newspaper -->
+
+</body>
+</html>

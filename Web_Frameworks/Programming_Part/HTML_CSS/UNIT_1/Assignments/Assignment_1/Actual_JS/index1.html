@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 1 — JS Tasks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="topbar">
+    <span class="logo">⟨JS / Tasks⟩</span>
+    <span class="task-label">TASK_01</span>
+    <div style="display:flex;gap:20px;">
+      <a href="../task2/index.html">Task 2 →</a>
+      <a href="../task3/index.html">Task 3 →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="task-num">Task 01</div>
+    <h1>Numbers &amp; <span>Randomness</span></h1>
+    <p>Reverse digits, generate multiplication tables, and produce random numbers within a custom range.</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- 1a -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">1A</span>
+        <h3>Reversing a Number</h3>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="meta-item"><strong>Input:</strong> Any digit sequence via prompt</span>
+          <span class="meta-item"><strong>Output:</strong> Digits in reverse order</span>
+        </div>
+        <div class="controls">
+          <button onclick="reverseNumber()">▶ Run</button>
+        </div>
+        <div class="output" id="reverse-output">Awaiting input…</div>
+      </div>
+    </div>
+
+    <!-- 1b -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">1B</span>
+        <h3>Multiplication Table</h3>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="meta-item"><strong>Input:</strong> A number N via prompt</span>
+          <span class="meta-item"><strong>Output:</strong> Tables from 1×1 up to N×10</span>
+        </div>
+        <div class="controls">
+          <button onclick="showMultTable()">▶ Run</button>
+        </div>
+        <div class="output" id="mult-output">Awaiting input…</div>
+      </div>
+    </div>
+
+    <!-- 1c -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">1C</span>
+        <h3>Generate Random Number in Range</h3>
+      </div>
+      <div class="card-body">
+        <div class="code-block">
+<span class="cm">/* returns a random integer between min and max (inclusive) */</span><br>
+<span class="kw">function</span> <span class="fn">getRndInteger</span>(min, max) {<br>
+&nbsp;&nbsp;<span class="kw">return</span> Math.floor(Math.random() * (max - min + <span class="num">1</span>)) + min;<br>
+}
+        </div>
+        <div class="controls">
+          <button onclick="showRandom()">▶ Run</button>
+        </div>
+        <div class="output" id="random-output">Awaiting input…</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function setOutput(id, html, isActive = true) {
+      const el = document.getElementById(id);
+      el.innerHTML = html;
+      el.className = 'output' + (isActive ? ' active' : '');
+    }
+
+    // 1a
+    function reverseNumber() {
+      const num = prompt("Enter a number:");
+      if (num === null || num.trim() === "") {
+        setOutput('reverse-output', '<span class="error">✕ No input provided.</span>', false);
+        return;
+      }
+      const reversed = num.trim().split('').reverse().join('');
+      setOutput('reverse-output',
+        `Given number   : <span class="highlight">${num}</span>\n` +
+        `Reversed digits: <span class="highlight2">${reversed}</span>`
+      );
+    }
+
+    // 1b
+    function showMultTable() {
+      const raw = prompt("Enter the range N for multiplication table:");
+      if (raw === null || raw.trim() === "" || isNaN(raw)) {
+        setOutput('mult-output', '<span class="error">✕ Invalid input.</span>', false);
+        return;
+      }
+      const n = parseInt(raw);
+      let out = `Multiplication tables from 1 to ${n}:\n\n`;
+      for (let i = 1; i <= n; i++) {
+        let row = "";
+        for (let j = 1; j <= 10; j++) {
+          const product = String(i * j).padStart(3, ' ');
+          row += `${i}×${j}=${product}  `;
+        }
+        out += row.trimEnd() + "\n";
+      }
+      setOutput('mult-output', out.replace(/(\d+×\d+=\s*\d+)/g, m => `<span class="highlight2">${m}</span>`));
+    }
+
+    // 1c
+    function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function showRandom() {
+      const min = parseInt(prompt("Enter minimum value:"));
+      const max = parseInt(prompt("Enter maximum value:"));
+      if (isNaN(min) || isNaN(max)) {
+        setOutput('random-output', '<span class="error">✕ Invalid input.</span>', false);
+        return;
+      }
+      if (min > max) {
+        setOutput('random-output', '<span class="error">✕ Min must be ≤ Max.</span>', false);
+        return;
+      }
+      const result = getRndInteger(min, max);
+      setOutput('random-output',
+        `Range  : [<span class="highlight">${min}</span>, <span class="highlight">${max}</span>]\n` +
+        `Result : <span class="highlight2" style="font-size:1.1em">${result}</span>`
+      );
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 2 — JS Tasks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="topbar">
+    <span class="logo">⟨JS / Tasks⟩</span>
+    <span class="task-label">TASK_02</span>
+    <div style="display:flex;gap:20px;">
+      <a href="../task1/index.html">← Task 1</a>
+      <a href="../task3/index.html">Task 3 →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="task-num">Task 02</div>
+    <h1>Numbers, <span>NaN</span> &amp; Strings</h1>
+    <p>Explore <code style="color:var(--accent3);font-family:var(--mono)">isNaN()</code> behaviour, number bases conversion, and a suite of string operations.</p>
+  </header>
+
+  <main class="content">
+
+    <!-- 2a -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">2A</span>
+        <h3>isNaN() — All JavaScript Primitives</h3>
+      </div>
+      <div class="card-body">
+
+        <div class="meta-row">
+          <span class="meta-item"><strong>isNaN(v)</strong> — coerces to Number first, then checks</span>
+          <span class="meta-item"><strong>Number.isNaN(v)</strong> — no coercion, strict check</span>
+        </div>
+
+        <!-- Static table -->
+        <div style="overflow-x:auto;">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Value</th>
+                <th>typeof</th>
+                <th>isNaN()</th>
+                <th>Number.isNaN()</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>NaN</td><td>number</td><td class="t">true</td><td class="t">true</td><td>NaN is NaN</td></tr>
+              <tr><td>42</td><td>number</td><td class="f">false</td><td class="f">false</td><td>Valid number</td></tr>
+              <tr><td>3.14</td><td>number</td><td class="f">false</td><td class="f">false</td><td>Valid float</td></tr>
+              <tr><td>Infinity</td><td>number</td><td class="f">false</td><td class="f">false</td><td>Infinity is a valid number type</td></tr>
+              <tr><td>"hello"</td><td>string</td><td class="t">true</td><td class="f">false</td><td>"hello" → NaN; Number.isNaN skips coercion</td></tr>
+              <tr><td>"42"</td><td>string</td><td class="f">false</td><td class="f">false</td><td>"42" coerces to 42</td></tr>
+              <tr><td>""</td><td>string</td><td class="f">false</td><td class="f">false</td><td>Empty string → 0</td></tr>
+              <tr><td>true</td><td>boolean</td><td class="f">false</td><td class="f">false</td><td>true → 1</td></tr>
+              <tr><td>false</td><td>boolean</td><td class="f">false</td><td class="f">false</td><td>false → 0</td></tr>
+              <tr><td>null</td><td>object</td><td class="f">false</td><td class="f">false</td><td>null → 0</td></tr>
+              <tr><td>undefined</td><td>undefined</td><td class="t">true</td><td class="f">false</td><td>undefined → NaN; Number.isNaN skips coercion</td></tr>
+              <tr><td>[]</td><td>object</td><td class="f">false</td><td class="f">false</td><td>[] → 0</td></tr>
+              <tr><td>{}</td><td>object</td><td class="t">true</td><td class="f">false</td><td>{} → NaN; Number.isNaN skips coercion</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Live checker -->
+        <div style="margin-top:8px;">
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">
+            Live checker — type any value (e.g. <code style="color:var(--accent3)">NaN, 42, "hello", true, null, undefined</code>):
+          </p>
+          <div class="controls">
+            <input type="text" id="isnanInput" placeholder="e.g. hello, 42, NaN, true" />
+            <button onclick="checkIsNaN()">▶ Check</button>
+          </div>
+          <div class="output" id="isnan-output">Awaiting input…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2b -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">2B</span>
+        <h3>Number Base Converter</h3>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="meta-item"><strong>Input:</strong> Any integer via prompt</span>
+          <span class="meta-item"><strong>Output:</strong> Decimal, Octal, Binary, Hex</span>
+        </div>
+        <div class="controls">
+          <button onclick="showDecOct()">▶ Run</button>
+        </div>
+        <div class="output" id="decoct-output">Awaiting input…</div>
+      </div>
+    </div>
+
+    <!-- 2c -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">2C</span>
+        <h3>String Operations</h3>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="meta-item"><strong>Subject:</strong> "The quick brown fox jumps over the lazy dog"</span>
+        </div>
+        <div class="output active" id="string-output">Loading…</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function setOutput(id, html, isActive = true) {
+      const el = document.getElementById(id);
+      el.innerHTML = html;
+      el.className = 'output' + (isActive ? ' active' : '');
+    }
+
+    // 2a
+    function checkIsNaN() {
+      const raw = document.getElementById('isnanInput').value;
+      let val;
+      try { val = eval(raw); } catch(e) { val = raw; }
+      const r1 = isNaN(val);
+      const r2 = Number.isNaN(val);
+      setOutput('isnan-output',
+        `Input entered       : <span class="highlight">${raw}</span>\n` +
+        `Evaluated value     : ${val}\n` +
+        `typeof              : <span class="highlight2">${typeof val}</span>\n` +
+        `isNaN(${raw})        = <span class="${r1 ? 'highlight' : 'highlight2'}">${r1}</span>\n` +
+        `Number.isNaN(${raw}) = <span class="${r2 ? 'highlight' : 'highlight2'}">${r2}</span>`
+      );
+    }
+
+    // 2b
+    function showDecOct() {
+      const num = prompt("Enter a number:");
+      if (num === null || isNaN(num)) {
+        setOutput('decoct-output', '<span class="error">✕ Invalid input.</span>', false);
+        return;
+      }
+      const n = parseInt(num);
+      setOutput('decoct-output',
+        `Number entered : <span class="highlight">${num}</span>\n` +
+        `Decimal (10)   : <span class="highlight2">${n}</span>\n` +
+        `Octal (8)      : <span class="highlight2">${n.toString(8)}</span>\n` +
+        `Binary (2)     : <span class="highlight2">${n.toString(2)}</span>\n` +
+        `Hexadecimal(16): <span class="highlight2">${n.toString(16).toUpperCase()}</span>`
+      );
+    }
+
+    // 2c — on load
+    window.addEventListener('DOMContentLoaded', function () {
+      const str = "The quick brown fox jumps over the lazy dog";
+      const h = (v) => `<span class="highlight2">${v}</span>`;
+      setOutput('string-output',
+        `Input string         : <span class="highlight">"${str}"</span>\n\n` +
+        `length               : ${h(str.length)}\n` +
+        `charAt(4)            : ${h(str.charAt(4))}\n` +
+        `indexOf("fox")       : ${h(str.indexOf("fox"))}\n` +
+        `lastIndexOf("the")   : ${h(str.lastIndexOf("the"))}\n` +
+        `search(/fox/)        : ${h(str.search(/fox/))}\n` +
+        `replace("fox","cat") : ${h(str.replace("fox","cat"))}\n` +
+        `replace(/the/gi,"a") : ${h(str.replace(/the/gi,"a"))}\n` +
+        `substring(4, 9)      : ${h(str.substring(4,9))}\n` +
+        `slice(4, 9)          : ${h(str.slice(4,9))}\n` +
+        `slice(-3)            : ${h(str.slice(-3))}\n` +
+        `toUpperCase()        : ${h(str.toUpperCase())}`
+      );
+    });
+  </script>
+</body>
+</html>

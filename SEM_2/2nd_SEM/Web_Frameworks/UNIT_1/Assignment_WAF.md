@@ -1,0 +1,884 @@
+## NAME:- **PAVAN G M**
+## SRN:- **PES1PG25CA147**
+
+
+# Adding Styles with CSS Assignment_01
+![[Pasted image 20260401110244.png|637]]
+
+## Code_Format 
+#### **Daily_Times.html**
+```html
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>The Daily Times</title>
+
+  
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet" />
+
+  
+
+<!-- Our own external stylesheet (styles.css) -->
+
+<link rel="stylesheet" href="styles.css" />
+
+  
+
+<style>
+
+  
+
+.weather-box ul li:nth-child(even) {
+
+background: rgba(0, 0, 0, 0.05); /* rgba colour */
+
+padding-left: 4px;
+
+}
+
+/* :first-child pseudo-class — bold top city */
+
+.weather-box ul li:first-child {
+
+font-weight: 700;
+
+color: hsl(38, 72%, 35%); /* hsl colour */
+
+}
+
+  
+
+.weather-box ul li:last-child {
+
+font-style: italic;
+
+color: rgb(90, 70, 50); /* rgb colour */
+
+}
+
+  
+
+blockquote.pull-quote {
+
+border-radius: 4px; /* px unit */
+
+}
+
+  
+  
+
+p.body-text:not(.drop-cap) {
+
+text-indent: 1em; /* em unit */
+
+}
+
+  
+  
+
+#footer .footer-col ul li a:hover {
+
+color: hsl(0, 60%, 40%); /* hsl — darker red on hover */
+
+text-decoration: underline dotted; /* text-decoration: dotted */
+
+}
+
+  
+
+/* ── E. Ticker label — add letter-spacing refinement ── */
+
+#ticker span.label {
+
+letter-spacing: 0.15em; /* em unit */
+
+border-radius: 2px; /* px */
+
+}
+
+  
+
+/* ── F. h2 headline — add text-decoration on hover via sibling ── */
+
+#top-story h2.headline {
+
+text-decoration: none;
+
+text-underline-offset: 4px; /* px */
+
+}
+
+  
+
+/* ── G. Ad box h4 — underline offset (internal extra) ── */
+
+.ad-box h4 {
+
+text-underline-offset: 3px; /* px */
+
+text-decoration-color: hsl(38, 72%, 42%); /* hsl colour */
+
+}
+
+  
+
+/* ── H. Subscribe form wrapper — internal padding/margin ── */
+
+.form-wrapper {
+
+margin-top: 0.8rem; /* rem */
+
+padding: 0.6rem; /* rem */
+
+border: 1px solid #d0c8b0; /* px, solid, hex */
+
+background: hsla(38, 30%, 95%, 0.6); /* hsla colour */
+
+border-radius: 3px; /* px */
+
+}
+
+  
+
+.form-wrapper h4 {
+
+font-family: 'Playfair Display', serif;
+
+font-size: 0.9rem; /* rem */
+
+margin-bottom: 0.4rem; /* rem */
+
+color: #1a1008; /* hex */
+
+}
+
+  
+
+.form-label {
+
+display: block;
+
+font-family: 'Lora', serif;
+
+font-size: 0.72rem; /* rem */
+
+color: rgb(110, 95, 75); /* rgb colour */
+
+margin-top: 0.4rem; /* rem */
+
+}
+
+  
+
+.form-hint {
+
+font-size: 0.62rem; /* rem */
+
+font-family: 'Lora', serif;
+
+font-style: italic;
+
+color: rgba(110, 95, 75, 0.8); /* rgba colour */
+
+margin-top: 0.3rem; /* rem */
+
+}
+
+  
+
+#precedence-demo {
+
+color: #c0392b; /* hex — internal rule (red) */
+
+font-weight: 600;
+
+}
+
+  
+
+/* ── J. Footer copy — text-align centre + italic (internal tweak) ── */
+
+.footer-copy {
+
+text-decoration: none;
+
+}
+
+  
+
+/* ── K. section-label inside .two-col — margin override (internal) ── */
+
+.two-col .section-label {
+
+margin: 0 0 0.6rem; /* rem — tighter than global rule */
+
+}
+
+  
+
+/* ── L. img-float-right inside .two-col — tighter width (internal) ── */
+
+.two-col .img-float-right {
+
+width: 150px; /* px — narrower in two-col layout */
+
+}
+
+  
+
+</style>
+
+</head>
+
+  
+
+<body>
+
+<div id="newspaper">
+
+  
+
+<header id="masthead">
+
+<div class="edition-bar">
+
+<span>Vol. CXLVII · No. 52</span>
+
+<span>★ LATE BREAKING &amp; EXCLUSIVE ★</span>
+
+<span>Price: ₹5.00</span>
+
+</div>
+
+  
+
+<h1 style="text-shadow: 3px 3px 8px rgba(0,0,0,0.6), 0 0 30px rgba(255,210,120,0.35);">
+
+The Daily Times
+
+</h1>
+
+<p class="tagline">Truth in Every Column · Founded 1878</p>
+
+</header>
+
+  
+
+<!-- TICKER — all styles from external CSS -->
+
+<div id="ticker">
+
+<span class="label">Breaking</span>
+
+<span class="scroll-text">
+
+Global summit concludes with landmark climate accord &nbsp;●&nbsp;
+
+Stock markets rally on positive trade data &nbsp;●&nbsp;
+
+Scientists unveil breakthrough in quantum computing &nbsp;●&nbsp;
+
+City council approves new urban green spaces &nbsp;●&nbsp;
+
+Champions League semi-finals draw announced
+
+</span>
+
+</div>
+
+  
+  
+
+<main id="content">
+
+  
+
+<!-- Section label — external .section-label styles it -->
+
+<div class="section-label">Today's Edition — Wednesday, April 1, 2026</div>
+
+  
+
+<!-- TOP STORY -->
+
+<article id="top-story">
+
+<h2 class="headline">World Leaders Forge Historic Green Energy Pact at Global Summit</h2>
+
+<p class="sub-headline">Seventy nations pledge carbon neutrality by 2040 — experts call it the most ambitious accord in decades</p>
+
+<hr class="column-rule" />
+
+  
+
+<div class="three-col clearfix">
+
+  
+
+<!-- COL 1 -->
+
+<div class="col">
+
+<div class="byline">
+
+<span>By Margaret Ellis, World Editor</span>
+
+<span>April 1, 2026</span>
+
+</div>
+
+  
+
+<p class="body-text drop-cap">
+
+Seventy world leaders gathered in Geneva this week and signed the most sweeping
+
+environmental agreement in history, committing their nations to full carbon
+
+neutrality no later than the year 2040. The accord, brokered over four intense
+
+days of negotiations, marks a turning point that climate scientists have described
+
+as "the last realistic window" for averting catastrophic warming.
+
+</p>
+
+<p class="body-text">
+
+The pact carries binding financial penalties for nations that fail to meet interim
+
+benchmarks set every three years. A new independent monitoring body, headquartered
+
+in Copenhagen, will publish quarterly compliance reports accessible to the public.
+
+</p>
+
+  
+
+<blockquote class="pull-quote">
+
+"This is not a promise — it is a legally binding obligation on behalf of future generations."
+
+</blockquote>
+
+</div>
+
+  
+
+<!-- COL 2 — float image -->
+
+<div class="col clearfix">
+
+<!--
+
+INLINE STYLE on .img-float-left wrapper:
+
+Adds a sepia-toned box-shadow on top of the border
+
+defined in external CSS. Demonstrates inline augmenting external.
+
+-->
+
+<div class="img-float-left"
+
+style="box-shadow: 4px 4px 10px rgba(43, 26, 0, 0.4);">
+
+<img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80"
+
+alt="World Leaders at Geneva Summit" />
+
+<p class="img-caption">Delegates sign the accord in Geneva — April 2026</p>
+
+</div>
+
+  
+
+<p class="body-text">
+
+Emerging economies secured a dedicated fund of $800 billion over fifteen years to
+
+accelerate their own green transitions, a key sticking point that nearly collapsed
+
+the talks on the third day. India and Brazil — both of whom had previously resisted
+
+binding terms — reversed course after the fund's structure was finalised.
+
+</p>
+
+<p class="body-text">
+
+Renewable energy executives from more than forty corporations signed a parallel
+
+industry pledge to double solar and wind capacity by 2032, providing the private
+
+sector backbone the agreement requires.
+
+<a href="#read-more">Read the full analysis →</a>
+
+</p>
+
+<p class="body-text">
+
+Critics from fossil-fuel producing nations argue the timeline is unrealistic,
+
+warning of economic dislocations if the transition is forced too quickly.
+
+"Jobs and livelihoods matter," said one delegate who asked not to be named.
+
+</p>
+
+</div>
+
+  
+
+<!-- COL 3 — weather + related stories -->
+
+<div class="col">
+
+<div class="byline">
+
+<span>Related Reports</span>
+
+</div>
+
+  
+
+<h3 class="art-head">Markets React With Cautious Optimism</h3>
+
+<p class="body-text">
+
+Green-energy indices surged 4.2% on Monday morning as traders priced in
+
+long-term contracts for solar panel manufacturing and battery storage.
+
+</p>
+
+  
+
+<hr class="column-rule" />
+
+  
+
+<h3 class="art-head">Scientists Applaud, Urge Vigilance</h3>
+
+<p class="body-text">
+
+The IPCC called the accord a "necessary but not sufficient" step, noting
+
+that enforcement will determine whether targets translate into real emission cuts.
+
+</p>
+
+  
+
+<hr class="column-rule" />
+
+  
+
+<!--
+
+Weather box — external CSS styles the box.
+
+Internal <style> handles :nth-child, :first-child, :last-child
+
+on the <li> elements to alternate row colours.
+
+-->
+
+<div class="weather-box">
+
+<h4>☁ Today's Weather</h4>
+
+<ul>
+
+<li>Chennai — 34°C, Partly Cloudy</li>
+
+<li>Mumbai — 31°C, Humid</li>
+
+<li>Delhi — 28°C, Clear Skies</li>
+
+<li>Bengaluru — 26°C, Light Showers</li>
+
+</ul>
+
+</div>
+
+</div>
+
+  
+
+</div><!-- end .three-col -->
+
+</article>
+
+  
+
+<hr class="thick" />
+
+  
+
+<!-- LOWER TWO-COLUMN STORIES -->
+
+<div class="two-col">
+
+  
+
+<!-- Story 2: Technology -->
+
+<div class="col">
+
+<!--
+
+INLINE STYLE on .section-label:
+
+Internal CSS already sets .two-col .section-label { margin: 0 0 .6rem }
+
+but inline goes further and also sets font-weight to confirm
+
+inline's higher precedence even over internal rules.
+
+-->
+
+<div class="section-label"
+
+style="font-weight: 700; letter-spacing: 0.3em;">Technology</div>
+
+  
+
+<h3 class="art-head">Quantum Leap: New Chip Solves Problems in Seconds That Would Take Supercomputers Millennia</h3>
+
+<h4 class="art-subhead">By Raj Patel, Science Correspondent</h4>
+
+  
+
+<!--
+
+.img-float-right — width overridden by internal CSS (.two-col .img-float-right { width:150px })
+
+which itself overrides the external default of 180px.
+
+-->
+
+<div class="img-float-right">
+
+<img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=300&q=80"
+
+alt="Quantum Chip" />
+
+<p class="img-caption">The 1,024-qubit processor unveiled Tuesday</p>
+
+</div>
+
+  
+
+<p class="body-text drop-cap">
+
+Researchers at a Silicon Valley laboratory revealed a 1,024-qubit quantum processor
+
+capable of executing complex optimisation problems in under four seconds — problems that
+
+would stump today's most powerful classical computers for thousands of years.
+
+</p>
+
+<p class="body-text">
+
+The implications for cryptography, drug discovery, and logistics are profound.
+
+Financial regulators have already convened an emergency working group to assess
+
+the risk to current encryption standards. <a href="#quantum">Learn more</a>
+
+</p>
+
+  
+
+<!--
+
+PRECEDENCE DEMO PARAGRAPH
+
+External CSS → sets colour: var(--red) [red]
+
+Internal CSS → also sets colour: #c0392b [still red, same specificity — internal wins over external]
+
+Inline style → sets colour: hsl(220,70%,40%) [BLUE — inline always wins, overrides both]
+
+Result you see: BLUE text.
+
+-->
+
+<p id="precedence-demo"
+
+style="color: hsl(220, 70%, 40%); border-color: hsl(220,70%,40%); background: hsla(220,70%,40%,0.08);">
+
+★ CSS Precedence Demo — External set this red · Internal kept it red ·
+
+<em>Inline overrides both to blue.</em> Inline always wins.
+
+</p>
+
+</div>
+
+  
+
+<!-- Story 3: Culture + Subscribe form -->
+
+<div class="col">
+
+<div class="section-label"
+
+style="font-weight: 700; letter-spacing: 0.3em;">Sports &amp; Culture</div>
+
+  
+
+<h3 class="art-head">The Art World's Billion-Dollar Heist That Never Was</h3>
+
+<h4 class="art-subhead">By Clara Voss, Arts &amp; Culture</h4>
+
+  
+
+<p class="body-text drop-cap">
+
+An elaborate scheme to steal three Impressionist masterworks from the Louvre was foiled
+
+by an unlikely alliance of a night-shift janitor, an AI surveillance system, and a
+
+retired Interpol detective on vacation in Paris. The would-be thieves had spent eighteen
+
+months tunnelling beneath the Left Bank.
+
+</p>
+
+<p class="body-text">
+
+Museum director Henri Fontaine praised the outcome as "a victory for vigilance and
+
+human intuition." The suspects face charges under three jurisdictions.
+
+<a href="#heist">Full story</a> · <a href="#gallery">See photos</a>
+
+</p>
+
+  
+
+<hr class="column-rule" />
+
+  
+
+<!--
+
+SUBSCRIBE FORM
+
+.form-wrapper, .form-label, .form-hint → defined in INTERNAL <style>
+
+input pseudo-classes (:focus, :hover, ::placeholder) → defined in EXTERNAL CSS
+
+Inline style on button → overrides background from external for extra warmth
+
+-->
+
+<div class="form-wrapper">
+
+<h4>📰 Subscribe to The Daily Times</h4>
+
+  
+
+<label class="form-label">
+
+Your Name
+
+<input type="text" placeholder="e.g. Margaret Ellis" />
+
+</label>
+
+  
+
+<label class="form-label">
+
+Email Address
+
+<input type="email" placeholder="you@example.com" />
+
+</label>
+
+  
+
+<!--
+
+INLINE STYLE on button:
+
+External CSS sets background: var(--red).
+
+This inline style adds a slight gradient on top — inline wins.
+
+-->
+
+<button class="subscribe-btn"
+
+style="background: linear-gradient(135deg, #c0392b, #96281b); margin-top: 0.5rem;">
+
+Subscribe Now
+
+</button>
+
+  
+
+<p class="form-hint">
+
+Hover inputs → gold border (:hover, external CSS) ·
+
+Click inside → red glow (:focus, external CSS)
+
+</p>
+
+</div>
+
+  
+  
+
+<div class="ad-box">
+
+<h4>Grand Emporium Sale</h4>
+
+<p>Finest goods at unbeatable prices. This week only — 30% off all imports.</p>
+
+<span class="coupon">Coupon: TIMES30</span>
+
+</div>
+
+</div>
+
+  
+
+</div><!-- end .two-col -->
+
+  
+
+</main>
+
+  
+
+<footer id="footer">
+
+<div class="footer-col">
+
+<h5>News Sections</h5>
+
+<ul>
+
+<li><a href="#">World</a></li>
+
+<li><a href="#">Politics</a></li>
+
+<li><a href="#">Business</a></li>
+
+<li><a href="#">Technology</a></li>
+
+<li><a href="#">Science</a></li>
+
+</ul>
+
+</div>
+
+<div class="footer-col">
+
+<h5>Arts &amp; Life</h5>
+
+<ul>
+
+<li><a href="#">Culture</a></li>
+
+<li><a href="#">Travel</a></li>
+
+<li><a href="#">Food &amp; Drink</a></li>
+
+<li><a href="#">Books</a></li>
+
+<li><a href="#">Sport</a></li>
+
+</ul>
+
+</div>
+
+<div class="footer-col">
+
+<h5>About</h5>
+
+<ul>
+
+<li><a href="#">Contact Us</a></li>
+
+<li><a href="#">Advertise</a></li>
+
+<li><a href="#">Archive</a></li>
+
+<li><a href="#">Corrections</a></li>
+
+<li><a href="#">Privacy Policy</a></li>
+
+</ul>
+
+</div>
+
+<div class="footer-col">
+
+<h5>CSS Feature Index</h5>
+
+<ul>
+
+<li>External .css file ✓</li>
+
+<li>Internal &lt;style&gt; ✓</li>
+
+<li>Inline style="" ✓</li>
+
+<li>Element, Class, ID selectors ✓</li>
+
+<li>Pseudo-classes (:hover :focus :link :visited :active :nth-child :first-child :last-child :not) ✓</li>
+
+<li>Pseudo-elements (::first-letter ::after ::placeholder) ✓</li>
+
+<li>Float left/right + clearfix ✓</li>
+
+<li>RGB, RGBA, HSL, HSLA, Hex ✓</li>
+
+<li>All border types (solid, double, dashed, dotted) ✓</li>
+
+<li>Margin, Padding ✓</li>
+
+<li>Text-decoration, Alignment ✓</li>
+
+<li>Units: px rem em pt % vw ✓</li>
+
+<li>Fonts: Playfair, Lora, Source Serif ✓</li>
+
+</ul>
+
+</div>
+
+</footer>
+
+  
+
+<p class="footer-copy">
+
+© 2026 The Daily Times Publishing Co. · All Rights Reserved · Established 1878 · Chennai, India
+
+</p>
+</div>
+</body>
+</html>
+```
+

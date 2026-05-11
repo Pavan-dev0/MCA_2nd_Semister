@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript Tasks</title>
+  <style>
+    /* Element selectors */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: darkblue;
+      text-align: center;
+    }
+    h2 {
+      color: darkgreen;
+      border-bottom: 2px solid darkgreen;
+    }
+    h3 {
+      color: #333;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 6px 12px;
+    }
+    th {
+      background-color: #ddd;
+    }
+    input[type="text"] {
+      padding: 4px;
+      width: 220px;
+    }
+    select {
+      padding: 4px;
+    }
+    button {
+      padding: 5px 12px;
+      cursor: pointer;
+    }
+
+    /* Class selectors */
+    .section {
+      border: 1px solid #aaa;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+    }
+    .output {
+      background-color: #e8f4e8;
+      border: 1px solid green;
+      padding: 10px;
+      margin-top: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    .code-block {
+      background-color: #f0f0f0;
+      border-left: 4px solid #666;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-size: 0.9em;
+      margin: 8px 0;
+    }
+
+    /* ID selectors */
+    #reverse-output {
+      color: darkred;
+      font-weight: bold;
+    }
+    #mult-output {
+      color: navy;
+    }
+    #random-output {
+      color: darkorange;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Task in JavaScript</h1>
+
+<!-- ========== TASK 1 ========== -->
+<h2>Task 1</h2>
+
+<!-- 1a -->
+<div class="section">
+  <h3>1a) Reversing a Number</h3>
+  <p>Parameter: A sequence of numbers using <strong>prompt</strong></p>
+  <p>Output: The number with its digits in reverse order</p>
+  <button onclick="reverseNumber()">Run</button>
+  <div class="output" id="reverse-output">Output will appear here.</div>
+</div>
+
+<!-- 1b -->
+<div class="section">
+  <h3>1b) Multiplication Table</h3>
+  <p>Input: A number using <strong>prompt</strong></p>
+  <p>Output: Multiplication table up to that number in series</p>
+  <button onclick="showMultTable()">Run</button>
+  <div class="output" id="mult-output">Output will appear here.</div>
+</div>
+
+<!-- 1c -->
+<div class="section">
+  <h3>1c) Generate Random Number between a given range</h3>
+  <div class="code-block">
+/* returns a random number between min and max (both included): */<br>
+function getRndInteger(min, max) {<br>
+&nbsp;&nbsp;return Math.floor(Math.random() * (max - min + 1)) + min;<br>
+}
+  </div>
+  <button onclick="showRandom()">Run</button>
+  <div class="output" id="random-output">Output will appear here.</div>
+</div>
+
+
+<!-- ========== TASK 2 ========== -->
+<h2>Task 2</h2>
+
+<!-- 2a -->
+<div class="section">
+  <h3>2a) isNaN() function — All types of JavaScript primitives</h3>
+
+  <h4>Descriptive</h4>
+  <p>
+    <strong>isNaN(value)</strong> — Converts the value to a Number first, then checks if it is NaN.<br>
+    <strong>Number.isNaN(value)</strong> — Does NOT coerce/convert. Returns true only if the value is strictly NaN.
+  </p>
+
+  <table>
+    <tr>
+      <th>Value</th>
+      <th>Type</th>
+      <th>isNaN()</th>
+      <th>Number.isNaN()</th>
+      <th>Reason</th>
+    </tr>
+    <tr><td>NaN</td><td>number</td><td>true</td><td>true</td><td>NaN is NaN</td></tr>
+    <tr><td>42</td><td>number</td><td>false</td><td>false</td><td>Valid number</td></tr>
+    <tr><td>3.14</td><td>number</td><td>false</td><td>false</td><td>Valid float</td></tr>
+    <tr><td>Infinity</td><td>number</td><td>false</td><td>false</td><td>Infinity is a valid number type</td></tr>
+    <tr><td>"hello"</td><td>string</td><td>true</td><td>false</td><td>"hello" converts to NaN; Number.isNaN doesn't coerce</td></tr>
+    <tr><td>"42"</td><td>string</td><td>false</td><td>false</td><td>"42" converts to 42</td></tr>
+    <tr><td>"" (empty string)</td><td>string</td><td>false</td><td>false</td><td>Empty string converts to 0</td></tr>
+    <tr><td>true</td><td>boolean</td><td>false</td><td>false</td><td>true converts to 1</td></tr>
+    <tr><td>false</td><td>boolean</td><td>false</td><td>false</td><td>false converts to 0</td></tr>
+    <tr><td>null</td><td>object</td><td>false</td><td>false</td><td>null converts to 0</td></tr>
+    <tr><td>undefined</td><td>undefined</td><td>true</td><td>false</td><td>undefined converts to NaN; Number.isNaN doesn't coerce</td></tr>
+    <tr><td>[] (empty array)</td><td>object</td><td>false</td><td>false</td><td>[] converts to 0</td></tr>
+    <tr><td>{} (object)</td><td>object</td><td>true</td><td>false</td><td>{} converts to NaN; Number.isNaN doesn't coerce</td></tr>
+  </table>
+
+  <h4 style="margin-top:16px;">Practical — Live Example</h4>
+  <p>Type any value (e.g. <em>NaN, 42, "hello", true, null, undefined</em>) and click Check:</p>
+  <input type="text" id="isnanInput" placeholder="e.g. hello, 42, NaN, true" />
+  <button onclick="checkIsNaN()">Check isNaN()</button>
+  <div class="output" id="isnan-output">Output will appear here.</div>
+</div>
+
+<!-- 2b -->
+<div class="section">
+  <h3>2b) Decimal and Octal number for numeric input given by user</h3>
+  <button onclick="showDecOct()">Run</button>
+  <div class="output" id="decoct-output">Output will appear here.</div>
+</div>
+
+<!-- 2c -->
+<div class="section">
+  <h3>2c) String Operations on "The quick brown fox jumps over the lazy dog"</h3>
+  <p>Operations: length, charAt, indexOf, lastIndexOf, search, replace with pattern, substring, slice, toUpperCase</p>
+  <div class="output" id="string-output"></div>
+</div>
+
+
+<!-- ========== TASK 3 ========== -->
+<h2>Task 3</h2>
+
+<!-- 3a -->
+<div class="section">
+  <h3>3a) Array operations using switch — single dimensional array with mixed types</h3>
+  <p>Select an operation:</p>
+  <select id="arrSelect">
+    <option value="1">1 — Dynamically insert new values to the existing array</option>
+    <option value="2">2 — Create array using Array object</option>
+    <option value="3">3 — Perform length operations</option>
+  </select>
+  <br><br>
+  <input type="text" id="arrValue" placeholder="Value to insert (for option 1)" />
+  <br><br>
+  <button onclick="doArraySwitch()">Execute</button>
+  <div class="output" id="arr-output">Output will appear here.</div>
+</div>
+
+<!-- 3b -->
+<div class="section">
+  <h3>3b) Two-Dimensional Array — contents displayed</h3>
+  <div class="output" id="arr2d-output"></div>
+</div>
+
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+
+  // --- 1a: Reverse Number ---
+  function reverseNumber() {
+    var num = prompt("Enter a number:");
+    if (num === null || num.trim() === "") {
+      document.getElementById('reverse-output').innerHTML = "No input provided.";
+      return;
+    }
+    var reversed = num.trim().split('').reverse().join('');
+    document.getElementById('reverse-output').innerHTML =
+      "Given number is: " + num + "<br>The Reversed digit is: " + reversed;
+  }
+
+  // --- 1b: Multiplication Table ---
+  function showMultTable() {
+    var n = prompt("Enter the Range to generate multiplication Table:");
+    if (n === null || n.trim() === "" || isNaN(n)) {
+      document.getElementById('mult-output').innerHTML = "Invalid input.";
+      return;
+    }
+    n = parseInt(n);
+    var out = "";
+    for (var i = 1; i <= n; i++) {
+      for (var j = 1; j <= 10; j++) {
+        out += i + " * " + j + " = " + (i * j) + "&nbsp;&nbsp;&nbsp;";
+      }
+      out += "<br>";
+    }
+    document.getElementById('mult-output').innerHTML = out;
+  }
+
+  // --- 1c: Random Number ---
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  function showRandom() {
+    var min = parseInt(prompt("Enter minimum value:"));
+    var max = parseInt(prompt("Enter maximum value:"));
+    if (isNaN(min) || isNaN(max)) {
+      document.getElementById('random-output').innerHTML = "Invalid input.";
+      return;
+    }
+    if (min > max) {
+      document.getElementById('random-output').innerHTML = "Min should be less than or equal to Max.";
+      return;
+    }
+    var result = getRndInteger(min, max);
+    document.getElementById('random-output').innerHTML =
+      "Random number between " + min + " and " + max + " is: " + result;
+  }
+
+  // --- 2a: isNaN practical ---
+  function checkIsNaN() {
+    var raw = document.getElementById('isnanInput').value;
+    var val;
+    try {
+      val = eval(raw);
+    } catch(e) {
+      val = raw;
+    }
+    var r1 = isNaN(val);
+    var r2 = Number.isNaN(val);
+    document.getElementById('isnan-output').innerHTML =
+      "Input entered      : " + raw + "<br>" +
+      "Evaluated value    : " + val + "<br>" +
+      "typeof             : " + typeof val + "<br>" +
+      "isNaN(" + raw + ")        = <strong>" + r1 + "</strong><br>" +
+      "Number.isNaN(" + raw + ") = <strong>" + r2 + "</strong>";
+  }
+
+  // --- 2b: Decimal and Octal ---
+  function showDecOct() {
+    var num = prompt("Enter a number:");
+    if (num === null || isNaN(num)) {
+      document.getElementById('decoct-output').innerHTML = "Invalid input.";
+      return;
+    }
+    var n = parseInt(num);
+    document.getElementById('decoct-output').innerHTML =
+      "Number entered : " + num + "<br>" +
+      "Decimal        : " + n + "<br>" +
+      "Octal          : " + n.toString(8) + "<br>" +
+      "Binary         : " + n.toString(2) + "<br>" +
+      "Hexadecimal    : " + n.toString(16).toUpperCase();
+  }
+
+  // --- 2c: String Operations (runs on page load) ---
+  window.addEventListener('DOMContentLoaded', function () {
+    var str = "The quick brown fox jumps over the lazy dog";
+    var out = document.getElementById('string-output');
+    out.innerHTML =
+      'Input String       : "' + str + '"<br><br>' +
+      'length             : ' + str.length + '<br>' +
+      'charAt(4)          : ' + str.charAt(4) + '<br>' +
+      'indexOf("fox")     : ' + str.indexOf("fox") + '<br>' +
+      'lastIndexOf("the") : ' + str.lastIndexOf("the") + '<br>' +
+      'search(/fox/)      : ' + str.search(/fox/) + '<br>' +
+      'replace("fox","cat")          : ' + str.replace("fox", "cat") + '<br>' +
+      'replace with pattern /the/gi  : ' + str.replace(/the/gi, "a") + '<br>' +
+      'substring(4, 9)    : ' + str.substring(4, 9) + '<br>' +
+      'slice(4, 9)        : ' + str.slice(4, 9) + '<br>' +
+      'slice(-3)          : ' + str.slice(-3) + '<br>' +
+      'toUpperCase()      : ' + str.toUpperCase();
+
+    // --- 3b: 2D Array (runs on page load) ---
+    var arr2d = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9]
+    ];
+    var txt = "2D Array declaration:\nvar arr2d = [[1,2,3],[4,5,6],[7,8,9]];\n\n";
+    txt += "Contents:\n";
+    for (var i = 0; i < arr2d.length; i++) {
+      for (var j = 0; j < arr2d[i].length; j++) {
+        txt += "arr2d[" + i + "][" + j + "] = " + arr2d[i][j] + "   ";
+      }
+      txt += "\n";
+    }
+    txt += "\nTotal rows    : " + arr2d.length;
+    txt += "\nTotal columns : " + arr2d[0].length;
+    txt += "\nExample access: arr2d[1][2] = " + arr2d[1][2];
+    document.getElementById('arr2d-output').innerText = txt;
+  });
+
+  // --- 3a: Array Switch ---
+  var myArray = [10, "hello", true, 3.14];
+
+  function doArraySwitch() {
+    var choice = parseInt(document.getElementById('arrSelect').value);
+    var out = "";
+
+    switch (choice) {
+      case 1:
+        var valStr = document.getElementById('arrValue').value.trim();
+        if (valStr === "") { out = "Please enter a value to insert."; break; }
+        var parsed;
+        if (valStr === "true")       parsed = true;
+        else if (valStr === "false") parsed = false;
+        else if (valStr === "null")  parsed = null;
+        else if (!isNaN(valStr))     parsed = Number(valStr);
+        else                          parsed = valStr;
+        myArray.push(parsed);
+        out = "Value inserted: " + JSON.stringify(parsed) + " (type: " + typeof parsed + ")\n" +
+              "Array now: [" + myArray.map(function(v){ return JSON.stringify(v); }).join(", ") + "]\n" +
+              "Length: " + myArray.length;
+        break;
+
+      case 2:
+        var objArr = new Array(1, "two", true, 4.5, null);
+        out = "Array created using new Array() constructor:\n" +
+              "[" + objArr.map(function(v){ return JSON.stringify(v); }).join(", ") + "]\n" +
+              "Length: " + objArr.length;
+        break;
+
+      case 3:
+        var lenBefore = myArray.length;
+        myArray.push("extra");
+        var lenAfterPush = myArray.length;
+        myArray.pop();
+        var lenAfterPop = myArray.length;
+        out = "Length before operation    : " + lenBefore + "\n" +
+              "Length after push('extra') : " + lenAfterPush + "\n" +
+              "Length after pop()         : " + lenAfterPop + "\n" +
+              "Current Array: [" + myArray.map(function(v){ return JSON.stringify(v); }).join(", ") + "]";
+        break;
+
+      default:
+        out = "Invalid choice.";
+    }
+    document.getElementById('arr-output').innerText = out;
+  }
+
+</script>
+</body>
+</html>

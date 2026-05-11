@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 3 — JS Tasks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="topbar">
+    <span class="logo">⟨JS / Tasks⟩</span>
+    <span class="task-label">TASK_03</span>
+    <div style="display:flex;gap:20px;">
+      <a href="../task1/index.html">← Task 1</a>
+      <a href="../task2/index.html">← Task 2</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <div class="task-num">Task 03</div>
+    <h1>Arrays &amp; <span>Data Structures</span></h1>
+    <p>Work with single-dimensional mixed-type arrays using switch-case logic, and explore two-dimensional arrays.</p>
+  </header>
+
+  <main class="content">
+
+    <!-- 3a -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">3A</span>
+        <h3>Array Operations via Switch</h3>
+      </div>
+      <div class="card-body">
+
+        <div class="meta-row">
+          <span class="meta-item"><strong>Base Array:</strong> [10, "hello", true, 3.14] — mixed types</span>
+        </div>
+
+        <!-- current array display -->
+        <div style="font-size:0.78rem;color:var(--text-muted);">Current array state:</div>
+        <div class="output active" id="arr-state" style="padding:10px 16px;">
+          [ <span class="highlight2">10</span>, <span class="highlight">"hello"</span>, <span class="highlight2">true</span>, <span class="highlight2">3.14</span> ]
+        </div>
+
+        <div class="controls" style="flex-direction:column;align-items:flex-start;gap:12px;">
+          <select id="arrSelect" style="min-width:360px;">
+            <option value="1">① — Dynamically insert a new value</option>
+            <option value="2">② — Create array using Array() constructor</option>
+            <option value="3">③ — Demonstrate length operations</option>
+          </select>
+          <div class="controls" style="gap:10px;">
+            <input type="text" id="arrValue" placeholder="Value to insert (option ①)" style="min-width:200px;" />
+            <button onclick="doArraySwitch()">▶ Execute</button>
+          </div>
+        </div>
+
+        <div class="output" id="arr-output">Select an option and click Execute.</div>
+      </div>
+    </div>
+
+    <!-- 3b -->
+    <div class="card">
+      <div class="card-header">
+        <span class="sub-id">3B</span>
+        <h3>Two-Dimensional Array</h3>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="meta-item"><strong>Structure:</strong> 3×3 numeric grid</span>
+        </div>
+
+        <!-- Visual grid -->
+        <div id="grid-visual" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;"></div>
+
+        <div class="output active" id="arr2d-output">Loading…</div>
+      </div>
+    </div>
+
+  </main>
+
+  <style>
+    .grid-cell {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 1rem;
+      color: var(--accent3);
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .grid-cell:hover {
+      background: rgba(78,205,196,0.1);
+      border-color: var(--accent3);
+    }
+    .grid-label {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      display: block;
+      font-weight: 400;
+    }
+  </style>
+
+  <script>
+    function setOutput(id, html, isActive = true) {
+      const el = document.getElementById(id);
+      el.innerHTML = html;
+      el.className = 'output' + (isActive ? ' active' : '');
+    }
+
+    // --- 3b: 2D Array ---
+    const arr2d = [[1,2,3],[4,5,6],[7,8,9]];
+
+    window.addEventListener('DOMContentLoaded', function () {
+      // Visual grid
+      const grid = document.getElementById('grid-visual');
+      arr2d.forEach((row, i) => {
+        row.forEach((val, j) => {
+          const cell = document.createElement('div');
+          cell.className = 'grid-cell';
+          cell.innerHTML = `<span class="grid-label">[${i}][${j}]</span>${val}`;
+          grid.appendChild(cell);
+        });
+      });
+
+      // Text output
+      let txt =
+        `Declaration:\n` +
+        `<span class="highlight2">var arr2d = [[1,2,3],[4,5,6],[7,8,9]];</span>\n\n` +
+        `Contents:\n`;
+
+      arr2d.forEach((row, i) => {
+        row.forEach((val, j) => {
+          txt += `arr2d[${i}][${j}] = <span class="highlight">${val}</span>   `;
+        });
+        txt += '\n';
+      });
+
+      txt +=
+        `\nTotal rows    : <span class="highlight2">${arr2d.length}</span>` +
+        `\nTotal columns : <span class="highlight2">${arr2d[0].length}</span>` +
+        `\nExample access: arr2d[1][2] = <span class="highlight">${arr2d[1][2]}</span>`;
+
+      setOutput('arr2d-output', txt);
+    });
+
+    // --- 3a: Array Switch ---
+    let myArray = [10, "hello", true, 3.14];
+
+    function renderState() {
+      const parts = myArray.map(v => {
+        if (typeof v === 'string') return `<span class="highlight">"${v}"</span>`;
+        return `<span class="highlight2">${JSON.stringify(v)}</span>`;
+      });
+      document.getElementById('arr-state').innerHTML =
+        '[ ' + parts.join(', ') + ' ]   <span style="color:var(--text-muted);font-size:0.75rem;">length: ' + myArray.length + '</span>';
+    }
+
+    function doArraySwitch() {
+      const choice = parseInt(document.getElementById('arrSelect').value);
+      let out = "";
+
+      switch (choice) {
+        case 1: {
+          const valStr = document.getElementById('arrValue').value.trim();
+          if (!valStr) { setOutput('arr-output', '<span class="error">✕ Please enter a value to insert.</span>', false); return; }
+          let parsed;
+          if (valStr === "true")       parsed = true;
+          else if (valStr === "false") parsed = false;
+          else if (valStr === "null")  parsed = null;
+          else if (!isNaN(valStr))     parsed = Number(valStr);
+          else                          parsed = valStr;
+          myArray.push(parsed);
+          renderState();
+          out =
+            `✔ Value inserted : <span class="highlight">${JSON.stringify(parsed)}</span>\n` +
+            `   typeof        : <span class="highlight2">${typeof parsed}</span>\n` +
+            `   New length     : <span class="highlight2">${myArray.length}</span>`;
+          break;
+        }
+        case 2: {
+          const objArr = new Array(1, "two", true, 4.5, null);
+          const parts = objArr.map(v => {
+            if (typeof v === 'string') return `<span class="highlight">"${v}"</span>`;
+            return `<span class="highlight2">${JSON.stringify(v)}</span>`;
+          });
+          out =
+            `Created with <span class="highlight2">new Array()</span> constructor:\n` +
+            `[ ${parts.join(', ')} ]\n` +
+            `Length: <span class="highlight2">${objArr.length}</span>`;
+          break;
+        }
+        case 3: {
+          const before = myArray.length;
+          myArray.push("extra");
+          const afterPush = myArray.length;
+          myArray.pop();
+          const afterPop = myArray.length;
+          renderState();
+          out =
+            `Length before push()  : <span class="highlight">${before}</span>\n` +
+            `Length after push()   : <span class="highlight2">${afterPush}</span>\n` +
+            `Length after pop()    : <span class="highlight">${afterPop}</span>\n\n` +
+            `push() adds to end, pop() removes from end.`;
+          break;
+        }
+        default:
+          out = '<span class="error">✕ Invalid choice.</span>';
+      }
+
+      setOutput('arr-output', out);
+    }
+
+    renderState();
+  </script>
+</body>
+</html>

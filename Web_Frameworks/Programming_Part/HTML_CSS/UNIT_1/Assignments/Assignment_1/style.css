@@ -1,0 +1,194 @@
+/* EXTERNAL CSS FILE */
+
+/* ===== EXTERNAL CSS - Element Selector ===== */
+p {
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.5;
+    margin: 6px 0;
+    text-align: justify;
+    color: #333;
+    /* HEX color format */
+    letter-spacing: 0.3px;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    /* RGB color format */
+    text-decoration: none;
+}
+
+/* ===== EXTERNAL CSS - Pseudo-class :active ===== */
+a:active {
+    color: rgba(214, 0, 0, 0.8);
+    /* RGBA color format with transparency */
+}
+
+/* ===== EXTERNAL CSS - Class Selector ===== */
+.sub-header {
+    background-color: hsl(0, 0%, 0%);
+    /* HSL color format - black */
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    /* margin with px unit */
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Archivo Black, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.sub-header .website {
+    flex: 1;
+    text-align: left;
+}
+
+.sub-header .website a {
+    /* color: #ffffff; */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sub-header .breaking {
+    flex: 1;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.sub-header .price {
+    flex: 1;
+    text-align: right;
+}
+
+/* ===== EXTERNAL CSS - Pseudo-element ::first-line ===== */
+.column p::first-line {
+    letter-spacing: 0.5px;
+}
+
+.main-headline {
+    text-align: center;
+    /* text-align property */
+    font-size: 78px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(81, 79, 79);
+    /* HSLA color format */
+    margin: 20px 0;
+    /* margin using px */
+    padding: 8px 0;
+    /* padding using px */
+    letter-spacing: 0.5px;
+    text-align: center;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.content-wrapper {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.column {
+    width: 47%;
+    float: left;
+    /* Float property used */
+    font-size: 12px;
+}
+
+.left-column {
+    margin-right: 6%;
+}
+
+.subheading {
+    color: #d60000;
+    /* HEX color - red */
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 0 6px 0;
+    font-weight: bold;
+    padding-left: 23px;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Using REM units ===== */
+.image-box {
+    width: 88%;
+    height: 12rem;
+
+    border: 2px solid #333;
+    background-color: rgba(200, 200, 200, 0.3);
+
+    margin-bottom: 1.25rem;
+
+    display: flex;
+    overflow: hidden; 
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    /* 👈 VERY IMPORTANT (prevents overflow) */
+}
+.image-box img {
+  width: 100%;
+  height: 100%;
+
+  object-fit:scale-down;   /* 👈 THIS fixes everything */
+}
+
+.coupon-box {
+    width: 88%;
+    /* 👈 SAME as image */
+    aspect-ratio: 1 / 1;
+    height: 12rem;
+
+    border: 4px dotted #000;
+    background-color: white;
+
+    margin-bottom: 1.25rem;
+    padding-right: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+.coupon-text {
+    color: rgb(214, 0, 0);
+    /* RGB color format - red */
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* ===== Using percentage ===== */
+.footer-credit {
+    margin-top: 15px;
+    padding-top: 10px;
+    font-size: 11px;
+    color: #999;
+    width: 100%;
+    /* percentage unit */
+}
+
+/* Top decorative border */
+.top-border {
+    height: 3px;
+    background-color: #333;
+    margin-bottom: 8px;
+}
+
+/* CSS PRECEDENCE DEMO - External CSS (lowest priority) */
+.precedence-class {
+    color: green;
+    /* This will be overridden by internal CSS and inline styles */
+    font-size: 14px;
+}

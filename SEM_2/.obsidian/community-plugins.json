@@ -2,5 +2,7 @@
   "better-export-pdf",
   "obsidian-style-settings",
   "obsidian-admonition",
-  "obsidian-minimal-settings"
+  "obsidian-minimal-settings",
+  "obsidian-excel-to-markdown-table",
+  "obsidian-table-generator"
 ]

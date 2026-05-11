@@ -1,0 +1,605 @@
+
+:root {
+  --ink:        #1a1008;                    /* hex colour          */
+  --paper:      #f5f0e8;                    /* hex colour          */
+  --aged:       #e8dfc8;                    /* hex colour          */
+  --rule:       #2b1a00;                    /* hex colour          */
+  --red:        #c0392b;                    /* hex colour          */
+  --red-soft:   rgba(192, 57, 43, 0.15);    /* rgba colour         */
+  --gold:       hsl(38, 72%, 42%);          /* hsl colour          */
+  --gold-light: hsla(38, 72%, 42%, 0.25);   /* hsla colour         */
+  --muted:      rgb(110, 95, 75);           /* rgb colour          */
+  --col-gap:    1.4rem;                     /* rem unit            */
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;   /* px-based box model */
+  margin:  0;
+  padding: 0;
+}
+
+body {
+  background-color:  #cfc7b0;              /* hex */
+  background-image:  repeating-linear-gradient(
+    0deg,
+    transparent,              transparent 24px,   /* px unit */
+    rgba(0,0,0,0.04)          24px,
+    rgba(0,0,0,0.04)          25px                /* px unit */
+  );
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size:   16px;                        /* px unit */
+  color:       var(--ink);
+  line-height: 1.5;
+}
+
+#newspaper {
+  max-width:     1850px;                    /* px unit */
+  margin:        2rem auto;               /* rem unit */
+  background:    var(--paper);
+  border:        3px double var(--rule);  /* px unit, border style */
+  border-radius: 2px;
+  box-shadow:    6px 6px 0 #8c7a5e,       /* px, hex */
+                 12px 12px 20px rgba(0,0,0,0.45); /* px, rgba */
+  padding-bottom: 2rem;                   /* rem unit */
+}
+
+/* ──────────────────────────────────────
+   5. MASTHEAD — ID selector
+   ────────────────────────────────────── */
+#masthead {
+  background:    var(--red);
+  color:         #fff;                    /* hex */
+  text-align:    center;
+  padding:       1rem 2rem 0.6rem;        /* rem unit */
+  border-bottom: 5px solid var(--rule);   /* px unit */
+  position:      relative;
+}
+
+/* Descendant selector: .edition-bar inside #masthead */
+#masthead .edition-bar {
+  display:          flex;
+  justify-content:  space-between;
+  font-family:      'Lora', Georgia, serif;
+  font-size:        0.7rem;               /* rem unit */
+  font-weight:      400;
+  letter-spacing:   0.12em;              /* em unit  */
+  text-transform:   uppercase;
+  text-align:       left;
+  color:            rgba(255, 255, 255, 0.85); /* rgba */
+  border-bottom:    1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom:   0.4rem;
+  margin-bottom:    0.5rem;
+}
+
+/* Descendant + element selector: h1 inside #masthead */
+#masthead h1 {
+  font-family:    'UnifrakturMaguntia', cursive;
+  font-size:      clamp(2.4rem, 7vw, 4.5rem); /* rem + vw units */
+  font-weight:    900;
+  letter-spacing: 0.04em;                /* em unit  */
+  line-height:    1;
+  color:          #fff;                  /* hex */
+  text-shadow:    2px 2px 0 rgba(0,0,0,0.4); /* px, rgba */
+  text-decoration: none;
+}
+
+/* Class selector inside ID: .tagline */
+#masthead .tagline {
+  font-family:    'Lora', Georgia, serif;
+  font-style:     italic;
+  font-size:      0.8rem;               /* rem unit */
+  letter-spacing: 0.25em;              /* em unit  */
+  color:          rgba(255,255,255,0.9); /* rgba */
+  margin-top:     0.3rem;
+}
+
+/* ──────────────────────────────────────
+   6. TICKER BAR — ID + class selectors
+   ────────────────────────────────────── */
+#ticker {
+  background:    var(--rule);
+  color:         var(--gold);
+  font-family:   'Lora', Georgia, serif;
+  font-size:     0.75rem;               /* rem */
+  letter-spacing: 0.1em;               /* em  */
+  text-transform: uppercase;
+  padding:       0.35rem 1rem;          /* rem */
+  display:       flex;
+  gap:           1rem;
+  overflow:      hidden;
+}
+
+/* Element + class selector: span.label */
+#ticker span.label {
+  background:  var(--red);
+  color:       #fff;
+  padding:     0.1rem 0.5rem;           /* rem */
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+#ticker .scroll-text {
+  animation:   marquee 28s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from { transform: translateX(100%);  }
+  to   { transform: translateX(-100%); }
+}
+
+/* ──────────────────────────────────────
+   7. SECTION LABEL — class selector
+   border, padding, margin, text props
+   ────────────────────────────────────── */
+.section-label {
+  font-family:    'Lora', Georgia, serif;
+  font-size:      0.65rem;             /* rem */
+  letter-spacing: 0.25em;             /* em  */
+  text-transform: uppercase;
+  color:          var(--red);
+  border-top:     3px solid var(--red);   /* px, solid border */
+  border-bottom:  1px solid var(--red);   /* px, solid border */
+  padding:        0.25rem 0.5rem;     /* rem */
+  margin:         1rem 2rem 0.8rem;   /* rem */
+}
+
+/* ──────────────────────────────────────
+   8. CONTENT AREA — ID selector
+   ────────────────────────────────────── */
+#content {
+  padding: 0 2rem;                     /* rem */
+}
+
+/* ──────────────────────────────────────
+   9. HORIZONTAL RULES — element + class
+   ────────────────────────────────────── */
+hr.column-rule {
+  border:     none;
+  border-top: 1px solid var(--rule);   /* px */
+  margin:     0.8rem 0;                /* rem */
+}
+hr.thick {
+  border-top: 3px double var(--rule);  /* px, double border */
+  margin:     1rem 0;                  /* rem */
+}
+
+/* ──────────────────────────────────────
+   10. TOP STORY — ID + descendant selectors
+   ────────────────────────────────────── */
+#top-story {
+  border-bottom:  3px double var(--rule); /* px */
+  padding-bottom: 1rem;                   /* rem */
+  margin-bottom:  1rem;                   /* rem */
+}
+
+/* ID + element + class descendant selector */
+#top-story h2.headline {
+  font-family:   'Playfair Display', Georgia, serif;
+  font-size:     clamp(1.8rem, 4.5vw, 3rem); /* rem + vw */
+  font-weight:   900;
+  line-height:   1.05;
+  text-align:    center;
+  margin-bottom: 0.4rem;               /* rem */
+  color:         var(--ink);
+  text-decoration: none;
+}
+
+#top-story .sub-headline {
+  font-family:   'Lora', Georgia, serif;
+  font-style:    italic;
+  font-size:     1rem;                 /* rem */
+  text-align:    center;
+  color:         var(--muted);
+  margin-bottom: 0.6rem;              /* rem */
+}
+
+/* ──────────────────────────────────────
+   11. FLOAT IMAGES — class selectors
+   float property, margin, border, width
+   ────────────────────────────────────── */
+.img-float-left {
+  float:  left;                        /* float property */
+  margin: 0 1.2rem 0.8rem 0;          /* rem — top right bottom left */
+  border: 3px solid var(--rule);       /* px, solid */
+  width:  200px;                       /* px */
+}
+
+.img-float-right {
+  float:  right;                       /* float property */
+  margin: 0 0 0.8rem 1.2rem;          /* rem */
+  border: 3px solid var(--rule);       /* px, solid */
+  width:  180px;                       /* px */
+}
+
+/* Multiple class selector: images inside both float classes */
+.img-float-left img,
+.img-float-right img {
+  width:   100%;                       /* % unit */
+  display: block;
+  filter:  sepia(0.4) contrast(1.05);
+}
+
+.img-caption {
+  font-family: 'Lora', Georgia, serif;
+  font-style:  italic;
+  font-size:   0.65rem;               /* rem */
+  color:       var(--muted);
+  text-align:  center;
+  padding:     0.25rem 0.3rem;        /* rem */
+  background:  var(--aged);
+  border-top:  1px solid var(--rule); /* px */
+}
+
+/* Pseudo-element: clearfix */
+.clearfix::after {
+  content: '';
+  display: table;
+  clear:   both;
+}
+
+/* ──────────────────────────────────────
+   12. GRID LAYOUTS — class selectors
+   ────────────────────────────────────── */
+.three-col {
+  display:               grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  gap:                   var(--col-gap); /* rem */
+  margin-top:            0.8rem;         /* rem */
+}
+
+.two-col {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   var(--col-gap); /* rem */
+  margin-top:            0.8rem;         /* rem */
+}
+
+.col {
+  border-right:  1px solid #b0a090;     /* px, hex */
+  padding-right: var(--col-gap);        /* rem */
+}
+
+/* :last-child pseudo-class */
+.col:last-child {
+  border-right:  none;
+  padding-right: 0;
+}
+
+/* ──────────────────────────────────────
+   13. ARTICLE TYPOGRAPHY — class selectors
+   font, size, weight, color, margin
+   ────────────────────────────────────── */
+h3.art-head {
+  font-family:   'Playfair Display', Georgia, serif;
+  font-weight:   700;
+  font-size:     1.1rem;               /* rem */
+  line-height:   1.2;
+  margin-bottom: 0.3rem;               /* rem */
+  color:         var(--ink);
+}
+
+h4.art-subhead {
+  font-family:   'Lora', Georgia, serif;
+  font-style:    italic;
+  font-size:     0.8rem;               /* rem */
+  color:         var(--muted);
+  margin-bottom: 0.4rem;               /* rem */
+}
+
+/* ──────────────────────────────────────
+   14. BODY TEXT — class selector
+   text-align, line-height, margin
+   ────────────────────────────────────── */
+p.body-text {
+  font-family:   'Source Serif 4', Georgia, serif;
+  font-size:     0.82rem;              /* rem */
+  line-height:   1.65;
+  text-align:    justify;              /* text-align property */
+  margin-bottom: 0.5rem;               /* rem */
+  color:         var(--ink);
+}
+
+/* ──────────────────────────────────────
+   15. DROP-CAP — pseudo-element selector
+   p::first-letter
+   ────────────────────────────────────── */
+p.drop-cap::first-letter {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size:   3.5rem;                 /* rem */
+  font-weight: 900;
+  float:       left;
+  line-height: 0.75;
+  margin:      0.1rem 0.35rem 0 0;    /* rem */
+  color:       var(--red);
+}
+
+/* ──────────────────────────────────────
+   16. PULL QUOTE — class selector
+   border, padding, background, text
+   ────────────────────────────────────── */
+blockquote.pull-quote {
+  border-left:   4px solid var(--red);  /* px */
+  border-right:  4px solid var(--red);  /* px */
+  margin:        0.8rem 0;              /* rem */
+  padding:       0.6rem 0.9rem;         /* rem */
+  background:    var(--red-soft);       /* rgba via variable */
+  font-family:   'Playfair Display', Georgia, serif;
+  font-style:    italic;
+  font-size:     1rem;                  /* rem */
+  text-align:    center;
+  color:         var(--red);
+  line-height:   1.4;
+}
+
+/* ──────────────────────────────────────
+   17. BYLINE — class selector
+   border, padding, margin, flex
+   ────────────────────────────────────── */
+.byline {
+  font-family:     'Lora', Georgia, serif;
+  font-size:       0.68rem;             /* rem */
+  letter-spacing:  0.08em;             /* em  */
+  text-transform:  uppercase;
+  color:           var(--muted);
+  border-top:      1px solid var(--muted);  /* px, solid */
+  border-bottom:   1px solid var(--muted);  /* px, solid */
+  padding:         0.2rem 0;           /* rem */
+  margin-bottom:   0.5rem;             /* rem */
+  display:         flex;
+  justify-content: space-between;
+}
+
+/* ──────────────────────────────────────
+   18. AD BOX & COUPON — class selectors
+   border double/dashed, background, text
+   ────────────────────────────────────── */
+.ad-box {
+  border:     3px double var(--gold);   /* px, double border */
+  background: var(--gold-light);        /* hsla via variable */
+  padding:    0.7rem 0.9rem;            /* rem */
+  text-align: center;
+  margin-top: 0.8rem;                   /* rem */
+}
+
+.ad-box h4 {
+  font-family:     'Playfair Display', Georgia, serif;
+  font-size:       0.95rem;             /* rem */
+  font-weight:     700;
+  color:           var(--rule);
+  text-decoration: underline double;    /* text-decoration style */
+}
+
+.ad-box p {
+  font-size:   0.7rem;                  /* rem */
+  font-family: 'Lora', Georgia, serif;
+  font-style:  italic;
+  color:       var(--muted);
+  margin-top:  0.3rem;                  /* rem */
+}
+
+.coupon {
+  display:        inline-block;
+  border:         2px dashed var(--rule);  /* px, dashed border */
+  padding:        0.3rem 0.7rem;           /* rem */
+  margin-top:     0.5rem;                  /* rem */
+  font-family:    'Source Serif 4', serif;
+  font-size:      0.75rem;                 /* rem */
+  font-weight:    600;
+  color:          var(--red);
+  letter-spacing: 0.1em;                   /* em */
+  text-transform: uppercase;
+}
+
+/* ──────────────────────────────────────
+   19. WEATHER BOX — class selector
+   ────────────────────────────────────── */
+.weather-box {
+  background:  var(--aged);
+  border:      1px solid #b0a090;       /* px, hex, solid */
+  padding:     0.6rem;                  /* rem */
+  font-family: 'Source Serif 4', serif;
+  font-size:   0.75rem;                 /* rem */
+}
+
+.weather-box h4 {
+  font-family:    'Playfair Display', serif;
+  font-size:      0.85rem;              /* rem */
+  border-bottom:  1px solid #b0a090;    /* px, solid, hex */
+  margin-bottom:  0.4rem;               /* rem */
+  padding-bottom: 0.2rem;               /* rem */
+}
+
+.weather-box ul {
+  list-style:  none;
+  line-height: 1.8;
+}
+
+/* ──────────────────────────────────────
+   20. LINKS — pseudo-class selectors
+   a:link  a:visited  a:hover  a:active
+   ────────────────────────────────────── */
+a {
+  color:           var(--red);
+  text-decoration: none;
+  font-style:      italic;
+}
+
+/* :link — unvisited links */
+a:link {
+  color:           var(--red);          /* hex via variable */
+  text-decoration: none;
+}
+
+/* :visited — already clicked */
+a:visited {
+  color:           hsl(0, 40%, 40%);   /* hsl colour */
+  text-decoration: line-through;        /* text-decoration */
+}
+
+/* :hover — mouse over */
+a:hover {
+  color:           var(--gold);         /* hsl via variable */
+  text-decoration: underline;           /* text-decoration */
+  letter-spacing:  0.04em;             /* em */
+}
+
+/* :active — being clicked */
+a:active {
+  color:      #000;                     /* hex */
+  background: var(--gold-light);        /* hsla via variable */
+}
+
+/* ──────────────────────────────────────
+   21. INPUT FIELDS — attribute + pseudo-class selectors
+   input[type] :focus :hover ::placeholder
+   ────────────────────────────────────── */
+input[type="text"],
+input[type="email"] {
+  border:      1px solid #b0a090;       /* px, solid, hex */
+  background:  var(--aged);
+  color:       var(--ink);
+  padding:     0.35rem 0.5rem;          /* rem */
+  font-family: 'Lora', Georgia, serif;
+  font-size:   0.8rem;                  /* rem */
+  width:       100%;                    /* % unit */
+  margin-top:  0.3rem;                  /* rem */
+  outline:     none;
+  transition:  border-color 0.2s, box-shadow 0.2s;
+}
+
+/* :focus pseudo-class */
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: var(--red);
+  box-shadow:   0 0 0 3px var(--red-soft); /* px, rgba via variable */
+}
+
+/* :hover pseudo-class on inputs */
+input[type="text"]:hover,
+input[type="email"]:hover {
+  border-color: var(--gold);            /* hsl via variable */
+}
+
+/* ::placeholder pseudo-element */
+input::placeholder {
+  color:      var(--muted);             /* rgb via variable */
+  font-style: italic;
+}
+
+/* ──────────────────────────────────────
+   22. BUTTON — class + pseudo-class selectors
+   :hover :active states
+   ────────────────────────────────────── */
+button.subscribe-btn {
+  margin-top:     0.5rem;               /* rem */
+  background:     var(--red);           /* hex via variable */
+  color:          #fff;                 /* hex */
+  border:         none;
+  padding:        0.4rem 1rem;          /* rem */
+  font-family:    'Lora', Georgia, serif;
+  font-size:      0.8rem;               /* rem */
+  letter-spacing: 0.08em;              /* em */
+  cursor:         pointer;
+  transition:     background 0.2s, transform 0.1s;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* :hover pseudo-class */
+button.subscribe-btn:hover {
+  background: var(--rule);              /* hex via variable */
+}
+
+/* :active pseudo-class */
+button.subscribe-btn:active {
+  transform: scale(0.97);
+}
+
+/* ──────────────────────────────────────
+   23. FOOTER — ID + class selectors
+   flex layout, border, margin, padding
+   ────────────────────────────────────── */
+#footer {
+  border-top:      3px double var(--rule); /* px, double */
+  margin:          1.5rem 2rem 0;          /* rem */
+  padding-top:     0.8rem;                 /* rem */
+  display:         flex;
+  justify-content: space-between;
+  align-items:     flex-start;
+  gap:             1rem;                   /* rem */
+  flex-wrap:       wrap;
+}
+
+.footer-col {
+  flex:      1;
+  min-width: 140px;                    /* px */
+}
+
+.footer-col h5 {
+  font-family:    'Playfair Display', Georgia, serif;
+  font-size:      0.8rem;              /* rem */
+  font-weight:    700;
+  border-bottom:  1px solid var(--muted); /* px, solid, rgb via var */
+  padding-bottom: 0.2rem;             /* rem */
+  margin-bottom:  0.4rem;             /* rem */
+  letter-spacing: 0.06em;            /* em  */
+}
+
+.footer-col ul      { list-style: none; }
+
+/* Descendant selector */
+.footer-col ul li {
+  font-size:   0.72rem;               /* rem */
+  line-height: 1.8;
+  color:       var(--muted);
+}
+
+.footer-col ul li a {
+  font-style: normal;
+  font-size:  0.72rem;                /* rem */
+}
+
+.footer-copy {
+  text-align:  center;
+  font-family: 'Lora', Georgia, serif;
+  font-style:  italic;
+  font-size:   0.65rem;               /* rem */
+  color:       var(--muted);
+  margin-top:  1rem;                  /* rem */
+  padding:     0 2rem;                /* rem */
+}
+
+/* ──────────────────────────────────────
+   24. PRECEDENCE DEMO — ID selector
+   (will be overridden by inline style)
+   ────────────────────────────────────── */
+#precedence-demo {
+  color:       var(--red);            /* set here; inline will override */
+  font-family: 'Lora', Georgia, serif;
+  font-style:  italic;
+  font-size:   0.8rem;                /* rem */
+  padding:     0.4rem 0.6rem;         /* rem */
+  border:      1px dashed var(--red); /* px, dashed, hex via variable */
+  background:  var(--red-soft);       /* rgba via variable */
+  margin-top:  0.5rem;                /* rem */
+}
+
+/* ──────────────────────────────────────
+   25. RESPONSIVE — media query
+   ────────────────────────────────────── */
+@media (max-width: 680px) {           /* px breakpoint */
+  .three-col, .two-col {
+    grid-template-columns: 1fr;
+  }
+  .col {
+    border-right:  none;
+    border-bottom: 1px solid #b0a090; /* px, solid, hex */
+    padding-bottom: 0.8rem;           /* rem */
+    padding-right:  0;
+  }
+  .img-float-left,
+  .img-float-right {
+    width: 130px;                     /* px */
+  }
+}

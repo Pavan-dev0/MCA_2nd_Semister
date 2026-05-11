@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task 1 — JS Basics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="page-header">
+    <span class="task-badge">Task 1</span>
+    <h1>JavaScript — Numbers & Sequences</h1>
+    <p class="subtitle">Reverse digits · Multiplication table · Random number generator</p>
+  </div>
+
+  <nav class="nav-links">
+    <a href="task1.html" class="active">Task 1</a>
+    <a href="task2.html">Task 2</a>
+    <a href="task3.html">Task 3</a>
+  </nav>
+
+  <!-- Part A: Reverse digits -->
+  <div class="card">
+    <h2>a) Reverse the Digits <span class="tag">prompt → output</span></h2>
+    <div class="input-row">
+      <input type="text" id="reverseInput" placeholder="Enter a number e.g. 12345" />
+      <button onclick="reverseNumber()">Reverse</button>
+      <button class="secondary" onclick="clearEl('reverseOut')">Clear</button>
+    </div>
+    <div class="output-box pink" id="reverseOut">Output appears here…</div>
+  </div>
+
+  <!-- Part B: Multiplication table -->
+  <div class="card">
+    <h2>b) Multiplication Table <span class="tag">up to N</span></h2>
+    <div class="input-row">
+      <input type="number" id="multInput" placeholder="Enter a number e.g. 3" min="1" max="20" />
+      <button onclick="showMultTable()">Generate</button>
+      <button class="secondary" onclick="clearEl('multOut')">Clear</button>
+    </div>
+    <div id="multOut"></div>
+  </div>
+
+  <!-- Part C: Random number -->
+  <div class="card">
+    <h2>c) Random Number Generator <span class="tag">min – max range</span></h2>
+    <div class="input-row">
+      <input type="number" id="rndMin" placeholder="Min" style="max-width:100px"/>
+      <input type="number" id="rndMax" placeholder="Max" style="max-width:100px"/>
+      <button onclick="generateRandom()">Generate</button>
+      <button class="secondary" onclick="clearEl('rndOut')">Clear</button>
+    </div>
+    <div class="output-box highlight" id="rndOut">Output appears here…</div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:10px;font-family:var(--mono)">
+      Math.floor(Math.random() * (max − min + 1)) + min
+    </p>
+  </div>
+
+</div>
+
+<script>
+  // Part A
+  function reverseNumber() {
+    const val = document.getElementById('reverseInput').value.trim();
+    if (!val || isNaN(val)) {
+      document.getElementById('reverseOut').textContent = '⚠ Please enter a valid number.';
+      return;
+    }
+    const isNeg = val.startsWith('-');
+    const digits = val.replace('-','');
+    const reversed = (isNeg ? '-' : '') + digits.split('').reverse().join('');
+    document.getElementById('reverseOut').textContent =
+      `Given number  : ${val}\nReversed digit : ${reversed}`;
+  }
+
+  // Part B
+  function showMultTable() {
+    const n = parseInt(document.getElementById('multInput').value);
+    const out = document.getElementById('multOut');
+    if (!n || n < 1 || n > 20) {
+      out.innerHTML = '<div class="output-box">⚠ Enter a number between 1 and 20.</div>';
+      return;
+    }
+    let html = '<div class="mult-grid">';
+    for (let i = 1; i <= n; i++) {
+      html += `<div class="mult-col"><div class="col-head">Table of ${i}</div>`;
+      for (let j = 1; j <= 10; j++) {
+        html += `<div class="row">${i}*${j}=${i*j}</div>`;
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    out.innerHTML = html;
+  }
+
+  // Part C
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function generateRandom() {
+    const min = parseInt(document.getElementById('rndMin').value);
+    const max = parseInt(document.getElementById('rndMax').value);
+    const out = document.getElementById('rndOut');
+    if (isNaN(min) || isNaN(max)) { out.textContent = '⚠ Enter both min and max.'; return; }
+    if (min > max) { out.textContent = '⚠ Min must be ≤ Max.'; return; }
+    const result = getRndInteger(min, max);
+    out.textContent = `Range: ${min} – ${max}\nRandom number: ${result}`;
+  }
+
+  function clearEl(id) {
+    const el = document.getElementById(id);
+    el.textContent = 'Output appears here…';
+    el.innerHTML = el.tagName === 'DIV' && !el.classList.contains('output-box') ? '' : el.textContent;
+  }
+</script>
+</body>
+</html>

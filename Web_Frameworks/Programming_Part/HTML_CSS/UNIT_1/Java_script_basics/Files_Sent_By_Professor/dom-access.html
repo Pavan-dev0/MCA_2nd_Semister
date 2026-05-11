@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Finding HTML elements by id
+Finding HTML elements by tag name
+Finding HTML elements by class name
+-->
+<html>
+<body>
+
+<h2>Finding HTML Elements by Id</h2>
+<p id="intro">Welcome to DOM Access via Id</p>
+<p>This example demonstrates the <b>getElementsById</b> method.</p>
+
+<p id="demo1"></p>
+<script>
+var myElement = document.getElementById("intro");
+document.getElementById("demo1").innerHTML = 
+"The intro paragraph display Access by ID Element " + myElement.innerHTML;
+</script>
+
+<!--
+<h2>Finding HTML Elements by Tag Name</h2>
+<p>Welcome to DOM Access via Tag</p>
+<p>This example demonstrates the <b>getElementsByTagName</b> method.</p>
+<p id="demo2"></p>
+
+<script>
+var x = document.getElementsByTagName("p");
+document.getElementById("demo2").innerHTML = 
+'The text in first paragraph (index 1) is: ' + x[2].innerHTML;
+</script>
+
+
+<h2>Finding HTML Elements by Class Name</h2>
+<p>Hello World!</p>
+<p class="intro">The DOM is very useful.</p>
+<p class="intro">This example demonstrates the <b>getElementsByClassName</b> method.</p>
+
+<p id="demo3"></p>
+
+<script>
+var x = document.getElementsByClassName("intro");
+document.getElementById("demo3").innerHTML = 
+'The first paragraph (index 0) with class="intro": ' + x[0].innerHTML;
+</script>
+-->
+</body>
+</html>

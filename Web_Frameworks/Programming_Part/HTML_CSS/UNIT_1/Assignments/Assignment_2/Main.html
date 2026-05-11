@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Real-Time Clock</title>
+  <link rel="stylesheet" href="clock.css"/>
+</head>
+<body>
+
+  <p class="page-title">&#9632; Real-Time Clock</p>
+
+  <div class="clocks-row">
+
+    <!-- ═══ DIGITAL ═══ -->
+    <div class="clock-card card-digital">
+      <span class="card-label">Digital</span>
+      <div class="date-row" id="d-date">—</div>
+
+      <div class="digital-display">
+        <div class="digit-group dg-h">
+          <span class="digit" id="dh1">0</span>
+          <span class="digit" id="dh2">0</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="digit-group dg-m">
+          <span class="digit" id="dm1">0</span>
+          <span class="digit" id="dm2">0</span>
+        </div>
+        <div class="secs-block">
+          <div class="digit-group">
+            <span class="digit" id="ds1">0</span>
+            <span class="digit" id="ds2">0</span>
+          </div>
+          <span class="lbl">SEC</span>
+        </div>
+        <span class="ampm" id="dampm">AM</span>
+      </div>
+
+      <div class="dig-bottom">
+        <div class="prog-ring-wrap">
+          <canvas id="ring-canvas" width="56" height="56"></canvas>
+          <span class="prog-center" id="ring-num">00</span>
+        </div>
+        <div class="dig-bottom-right">
+          <div class="ms-label">MILLISECONDS</div>
+          <div class="ms-bar">
+            <div class="ms-fill" id="ms-fill" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ANALOG ═══ -->
+    <div class="clock-card card-analog">
+      <span class="card-label">Analog</span>
+      <div class="date-row" id="a-date">—</div>
+
+      <div class="analog-wrap">
+        <svg id="analog-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="face-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#141c32"/>
+              <stop offset="100%" stop-color="#0a0f1a"/>
+            </radialGradient>
+            <filter id="glow-v" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="glow-b" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- decorative rings -->
+          <circle cx="130" cy="130" r="126" fill="none" stroke="#1a2540" stroke-width="1.5"/>
+          <circle cx="130" cy="130" r="122" fill="none" stroke="rgba(167,139,250,.15)" stroke-width="1"/>
+          <!-- face -->
+          <circle cx="130" cy="130" r="120" fill="url(#face-grad)"/>
+          <!-- inner glow ring -->
+          <circle cx="130" cy="130" r="108" fill="none" stroke="rgba(56,189,248,.08)" stroke-width="5"/>
+
+          <!-- built by JS -->
+          <g id="a-ticks"></g>
+          <g id="a-nums"></g>
+
+          <!-- hands -->
+          <line id="hand-hour"   class="hand hand-hour"
+                x1="130" y1="130" x2="130" y2="72" filter="url(#glow-v)"/>
+          <line id="hand-minute" class="hand hand-minute"
+                x1="130" y1="130" x2="130" y2="46" filter="url(#glow-b)"/>
+          <line id="hand-second" class="hand hand-second"
+                x1="130" y1="150" x2="130" y2="38"/>
+
+          <!-- center hub -->
+          <circle cx="130" cy="130" r="8"   fill="#1a2540" stroke="#a78bfa" stroke-width="1.5"/>
+          <circle cx="130" cy="130" r="3.5" fill="#f472b6"/>
+        </svg>
+      </div>
+
+      <div class="analog-readout">
+        <div class="readout-item">
+          <div class="readout-label">HOUR</div>
+          <div class="readout-val rv-h" id="a-h">--</div>
+        </div>
+        <div class="readout-item">
+          <div class="readout-label">MIN</div>
+          <div class="readout-val rv-m" id="a-m">--</div>
+        </div>
+        <div class="readout-item">
+          <div class="readout-label">SEC</div>
+          <div class="readout-val rv-s" id="a-s">--</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .clocks-row -->
+
+  <script src="clock.js"></script>
+</body>
+</html>

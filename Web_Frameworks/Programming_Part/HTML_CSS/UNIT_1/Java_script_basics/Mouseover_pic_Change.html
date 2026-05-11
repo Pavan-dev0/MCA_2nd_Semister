@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Hover Image Change</title>
+  <script>
+    function mouseOver() {
+      document.getElementById("myImage").src = "https://www.w3schools.com/js/pic_bulbon.gif";
+    }
+
+    function mouseOut() {
+      document.getElementById("myImage").src = "https://www.w3schools.com/js/pic_bulboff.gif";
+    }
+  </script>
+</head>
+<body>
+  <h2>Example: Mouse Hover Picture Change</h2>
+  <p>
+    Hover over the bulb to see it switch on, and move away to switch it off.
+  </p>
+  <img src="https://www.w3schools.com/js/pic_bulboff.gif" 
+       alt="Bulb Off" 
+       id="myImage" 
+       onmouseover="mouseOver()" 
+       onmouseout="mouseOut()">
+</body>
+</html>

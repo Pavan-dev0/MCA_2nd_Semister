@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:      #07090f;
+  --panel:   #0e1220;
+  --border:  #1a2540;
+  --c1:      #a78bfa;
+  --c2:      #f472b6;
+  --c3:      #38bdf8;
+  --c4:      #fb923c;
+  --c5:      #34d399;
+  --c6:      #facc15;
+  --text:    #e2e8f0;
+  --muted:   #475569;
+  --r:       22px;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Share Tech Mono',monospace;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  padding:40px 20px;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%,rgba(167,139,250,.07) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 35% at 80% 70%,rgba(56,189,248,.07) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 30% at 55% 10%,rgba(244,114,182,.06) 0%,transparent 70%);
+  pointer-events:none;z-index:0;
+}
+
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(167,139,250,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(167,139,250,.025) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;z-index:0;
+}
+
+/* ── Page title ── */
+.page-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(.8rem,2.5vw,1.1rem);
+  font-weight:700;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  z-index:1;
+}
+
+/* ── Clocks row ── */
+.clocks-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:32px;
+  justify-content:center;
+  align-items:flex-start;
+  width:100%;
+  max-width:960px;
+  z-index:1;
+}
+
+/* ── Shared card ── */
+.clock-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:32px 36px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+  position:relative;
+  flex:1 1 360px;
+  max-width:440px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 24px 60px rgba(0,0,0,.5);
+}
+
+.clock-card::before{
+  content:'';
+  position:absolute;top:0;left:24px;right:24px;height:2px;
+  border-radius:0 0 4px 4px;
+}
+.card-digital::before{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c4));}
+.card-analog::before {background:linear-gradient(90deg,var(--c3),var(--c5),var(--c6));}
+
+.card-label{
+  font-family:'Orbitron',sans-serif;
+  font-size:.6rem;
+  letter-spacing:.25em;
+  padding:3px 12px;
+  border-radius:99px;
+  border:1px solid var(--border);
+  color:var(--muted);
+  text-transform:uppercase;
+  align-self:flex-start;
+}
+
+/* ── Date row ── */
+.date-row{
+  font-size:.75rem;
+  letter-spacing:.12em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.date-row .hi{color:var(--c3);}
+
+/* ════ DIGITAL ════ */
+.digital-display{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  line-height:1;
+}
+.digit-group{display:flex;gap:1px;}
+
+.digit{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(2.8rem,10vw,5rem);
+  font-weight:900;
+  width:1ch;
+  text-align:center;
+}
+.dg-h .digit{color:var(--c1);text-shadow:0 0 20px rgba(167,139,250,.6);}
+.dg-m .digit{color:var(--c2);text-shadow:0 0 20px rgba(244,114,182,.6);}
+
+.colon{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(2.8rem,10vw,5rem);
+  font-weight:900;
+  color:var(--border);
+  line-height:1;
+  align-self:flex-start;
+  margin-top:4px;
+  animation:blink 1s step-start infinite;
+}
+@keyframes blink{50%{color:var(--c4);text-shadow:0 0 12px rgba(251,146,60,.5);}}
+
+.secs-block{
+  display:flex;flex-direction:column;
+  align-items:center;gap:4px;
+  margin-left:4px;
+}
+.secs-block .digit{
+  font-size:clamp(1.4rem,4.5vw,2.2rem);
+  color:var(--c4);
+  text-shadow:0 0 16px rgba(251,146,60,.6);
+}
+.secs-block .lbl{font-size:.5rem;letter-spacing:.2em;color:var(--muted);}
+
+.ampm{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(.75rem,2vw,.95rem);
+  font-weight:700;
+  color:var(--c5);
+  letter-spacing:.08em;
+  align-self:flex-end;
+  margin-bottom:8px;
+  text-shadow:0 0 10px rgba(52,211,153,.5);
+}
+
+.prog-ring-wrap{position:relative;width:56px;height:56px;}
+.prog-ring-wrap canvas{position:absolute;inset:0;}
+.prog-center{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Orbitron',sans-serif;
+  font-size:.7rem;font-weight:700;
+  color:var(--c6);
+}
+
+.ms-label{font-size:.6rem;letter-spacing:.15em;color:var(--muted);margin-bottom:6px;}
+.ms-bar{width:100%;height:3px;background:var(--border);border-radius:99px;overflow:hidden;}
+.ms-fill{height:100%;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c4));border-radius:99px;will-change:width;}
+
+.dig-bottom{display:flex;align-items:center;gap:20px;width:100%;}
+.dig-bottom-right{flex:1;}
+
+/* ════ ANALOG ════ */
+.analog-wrap{
+  position:relative;
+  width:clamp(220px,55vw,280px);
+  height:clamp(220px,55vw,280px);
+}
+#analog-svg{width:100%;height:100%;overflow:visible;}
+
+.hand{stroke-linecap:round;}
+.hand-hour  {stroke:var(--c4);stroke-width:6;opacity:.9;}
+.hand-minute{stroke:var(--c3);stroke-width:4;opacity:.9;}
+.hand-second{stroke:var(--c2);stroke-width:2;}
+
+.tick-maj{stroke:var(--c1);stroke-width:2.5;opacity:.7;}
+.tick-min{stroke:var(--muted);stroke-width:1.2;opacity:.4;}
+.hour-lbl{
+  font-family:'Orbitron',sans-serif;
+  font-size:10px;font-weight:700;
+  fill:var(--text);
+  text-anchor:middle;dominant-baseline:central;
+}
+
+.analog-readout{display:flex;gap:20px;}
+.readout-item{text-align:center;}
+.readout-label{font-size:.55rem;letter-spacing:.2em;color:var(--muted);}
+.readout-val{
+  font-family:'Orbitron',sans-serif;
+  font-size:1.2rem;font-weight:700;
+}
+.rv-h{color:var(--c4);}
+.rv-m{color:var(--c3);}
+.rv-s{color:var(--c2);}

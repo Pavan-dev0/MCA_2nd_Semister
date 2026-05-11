@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task 2 — JS Types & Strings</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="page-header">
+    <span class="task-badge">Task 2</span>
+    <h1>JavaScript — Types & Strings</h1>
+    <p class="subtitle">isNaN() · Decimal & Octal · String operations</p>
+  </div>
+
+  <nav class="nav-links">
+    <a href="task1.html">Task 1</a>
+    <a href="task2.html" class="active">Task 2</a>
+    <a href="task3.html">Task 3</a>
+  </nav>
+
+  <!-- Part A: isNaN -->
+  <div class="card">
+    <h2>a) isNaN() — All Primitive Types <span class="tag">auto-demo</span></h2>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:14px">
+      Showing <code style="font-family:var(--mono);font-size:0.8rem">isNaN()</code> result for every JavaScript primitive type.
+    </p>
+    <table id="isNanTable">
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th>Type</th>
+          <th>isNaN()</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Part B: Decimal & Octal -->
+  <div class="card">
+    <h2>b) Decimal & Octal Display <span class="tag">numeric input</span></h2>
+    <div class="input-row">
+      <input type="number" id="numInput" placeholder="Enter a number e.g. 255"/>
+      <button onclick="showNumBases()">Show</button>
+      <button class="secondary" onclick="clearEl('numOut')">Clear</button>
+    </div>
+    <div class="output-box" id="numOut">Output appears here…</div>
+  </div>
+
+  <!-- Part C: String operations -->
+  <div class="card">
+    <h2>c) String Operations <span class="tag">fixed input</span></h2>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:14px">
+      Input: <span style="font-family:var(--mono);color:var(--text)">"The quick brown fox jumps over the lazy dog"</span>
+    </p>
+    <button onclick="runStringOps()" style="margin-bottom:16px">Run All Operations</button>
+    <div id="strOut"></div>
+  </div>
+
+</div>
+
+<script>
+  // Part A — isNaN table
+  const primitives = [
+    { val: 42,          note: 'integer'           },
+    { val: 3.14,        note: 'float'             },
+    { val: NaN,         note: 'NaN literal'       },
+    { val: Infinity,    note: 'Infinity'          },
+    { val: "123",       note: 'numeric string'    },
+    { val: "hello",     note: 'non-numeric string'},
+    { val: "",          note: 'empty string'      },
+    { val: true,        note: 'boolean true'      },
+    { val: false,       note: 'boolean false'     },
+    { val: null,        note: 'null'              },
+    { val: undefined,   note: 'undefined'         },
+  ];
+
+  const tbody = document.querySelector('#isNanTable tbody');
+  primitives.forEach(p => {
+    const result = isNaN(p.val);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${String(p.val)}</td>
+      <td>${typeof p.val}</td>
+      <td class="${result ? 'true-cell' : 'false-cell'}">${result}</td>
+      <td>${p.note}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Part B — decimal / octal
+  function showNumBases() {
+    const n = parseInt(document.getElementById('numInput').value);
+    const out = document.getElementById('numOut');
+    if (isNaN(n)) { out.textContent = '⚠ Please enter a valid integer.'; return; }
+    out.textContent =
+      `Decimal : ${n}\nOctal   : ${n.toString(8)} (0o${n.toString(8)})\nBinary  : ${n.toString(2)}\nHex     : ${n.toString(16).toUpperCase()} (0x${n.toString(16).toUpperCase()})`;
+  }
+
+  // Part C — string ops
+  function runStringOps() {
+    const s = "The quick brown fox jumps over the lazy dog";
+    const ops = [
+      { name: 'length',                  val: s.length },
+      { name: 'charAt(4)',               val: s.charAt(4) },
+      { name: 'indexOf("fox")',          val: s.indexOf("fox") },
+      { name: 'lastIndexOf("the")',      val: s.lastIndexOf("the") },
+      { name: 'search(/fox/)',           val: s.search(/fox/) },
+      { name: 'replace("fox","cat")',    val: s.replace("fox", "cat") },
+      { name: 'substring(4, 9)',         val: s.substring(4, 9) },
+      { name: 'slice(4, 9)',             val: s.slice(4, 9) },
+      { name: 'slice(-8)',               val: s.slice(-8) },
+      { name: 'toUpperCase()',           val: s.toUpperCase() },
+    ];
+
+    let html = '<div class="str-result-list">';
+    ops.forEach(op => {
+      html += `<div class="str-result-item">
+        <span class="op-name">${op.name}</span>
+        <span class="op-val">${op.val}</span>
+      </div>`;
+    });
+    html += '</div>';
+    document.getElementById('strOut').innerHTML = html;
+  }
+
+  function clearEl(id) {
+    document.getElementById(id).textContent = 'Output appears here…';
+  }
+</script>
+</body>
+</html>

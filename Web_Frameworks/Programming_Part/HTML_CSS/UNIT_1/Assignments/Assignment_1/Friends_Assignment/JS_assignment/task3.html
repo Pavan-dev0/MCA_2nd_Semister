@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task 3 — JS Arrays</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="page-header">
+    <span class="task-badge">Task 3</span>
+    <h1>JavaScript — Arrays</h1>
+    <p class="subtitle">Switch-based array ops · Dynamic insert · Array object · 2D arrays</p>
+  </div>
+
+  <nav class="nav-links">
+    <a href="task1.html">Task 1</a>
+    <a href="task2.html">Task 2</a>
+    <a href="task3.html" class="active">Task 3</a>
+  </nav>
+
+  <!-- Part A: switch-based array operations -->
+  <div class="card">
+    <h2>a) Array Operations via Switch <span class="tag">mixed types</span></h2>
+
+    <p class="section-label">i — Insert value into array</p>
+    <div class="input-row">
+      <input type="text" id="insertVal" placeholder='Value e.g. 42 or "hello" or true'/>
+      <button onclick="doInsert()">Insert</button>
+      <button class="secondary" onclick="clearArray()">Reset Array</button>
+    </div>
+    <div id="arrayDisplay" class="array-display"></div>
+    <div class="output-box" id="insertOut" style="margin-top:10px">Array is empty. Insert values above.</div>
+
+    <p class="section-label" style="margin-top:20px">ii — Create array using Object</p>
+    <button onclick="createFromObject()">Create from Object</button>
+    <div class="output-box" id="objOut" style="margin-top:10px">Click to generate…</div>
+
+    <p class="section-label" style="margin-top:20px">iii — Length operations</p>
+    <button onclick="showLength()">Show Length Info</button>
+    <div class="output-box" id="lenOut" style="margin-top:10px">Click to show length info…</div>
+  </div>
+
+  <!-- Part B: 2D arrays -->
+  <div class="card">
+    <h2>b) Two-Dimensional Array <span class="tag">auto-demo</span></h2>
+    <button onclick="render2D()" style="margin-bottom:14px">Display 2D Array</button>
+    <div id="twoDOut"></div>
+  </div>
+
+</div>
+
+<script>
+  // ---- Part A: switch-based array ----
+  let myArray = [];
+
+  function getType(val) {
+    if (!isNaN(val) && val.trim() !== '') return 'number';
+    if (val === 'true' || val === 'false') return 'bool';
+    return 'str';
+  }
+
+  function parseValue(raw) {
+    const t = getType(raw);
+    if (t === 'number') return { v: Number(raw), type: t };
+    if (t === 'bool')   return { v: raw === 'true', type: t };
+    return { v: raw.replace(/^['"]|['"]$/g,''), type: t };
+  }
+
+  function doInsert() {
+    const raw = document.getElementById('insertVal').value.trim();
+    if (!raw) return;
+
+    const { v, type } = parseValue(raw);
+    let action;
+
+    switch(type) {
+      case 'number': action = 'push (number)';  myArray.push(v);    break;
+      case 'bool':   action = 'push (boolean)'; myArray.push(v);    break;
+      default:       action = 'push (string)';  myArray.push(v);
+    }
+
+    document.getElementById('insertVal').value = '';
+    renderArray();
+    document.getElementById('insertOut').textContent =
+      `Action: ${action}\nArray length: ${myArray.length}\nContents: [${myArray.map(x => JSON.stringify(x)).join(', ')}]`;
+  }
+
+  function renderArray() {
+    const display = document.getElementById('arrayDisplay');
+    if (myArray.length === 0) {
+      display.innerHTML = '';
+      return;
+    }
+    display.innerHTML = myArray.map((v, i) => {
+      const t = typeof v;
+      const cls = t === 'number' ? 'num' : t === 'boolean' ? 'bool' : 'str';
+      return `<span class="arr-item ${cls}">[${i}] ${JSON.stringify(v)}<br><small style="opacity:0.6">${t}</small></span>`;
+    }).join('');
+  }
+
+  function clearArray() {
+    myArray = [];
+    renderArray();
+    document.getElementById('insertOut').textContent = 'Array reset. Insert values above.';
+  }
+
+  function createFromObject() {
+    const arrObj = new Array(5);
+    arrObj[0] = 'apple';
+    arrObj[1] = 100;
+    arrObj[2] = true;
+    arrObj[3] = 3.14;
+    arrObj[4] = 'hello';
+
+    document.getElementById('objOut').textContent =
+      `Created via: new Array(5)\n` +
+      arrObj.map((v, i) => `  [${i}] = ${JSON.stringify(v)}  (${typeof v})`).join('\n') +
+      `\nLength: ${arrObj.length}`;
+  }
+
+  function showLength() {
+    const demo = [10, 'JS', true, null, 3.14];
+    const out = document.getElementById('lenOut');
+
+    let text = `Array: [${demo.map(x => JSON.stringify(x)).join(', ')}]\n`;
+    text += `length          : ${demo.length}\n`;
+    text += `after push(99)  : ${(demo.push(99), demo.length)}\n`;
+    text += `after pop()     : ${(demo.pop(), demo.length)}\n`;
+    text += `after shift()   : ${(demo.shift(), demo.length)} (removed first)\n`;
+    text += `final array     : [${demo.map(x => JSON.stringify(x)).join(', ')}]`;
+    out.textContent = text;
+  }
+
+  // ---- Part B: 2D array ----
+  function render2D() {
+    const matrix = [
+      [1,  2,  3,  4],
+      [5,  6,  7,  8],
+      [9, 10, 11, 12],
+    ];
+
+    let html = `<p style="font-size:0.82rem;color:var(--muted);margin-bottom:10px;font-family:var(--mono)">
+      const matrix = [ [1,2,3,4], [5,6,7,8], [9,10,11,12] ]<br>Rows: ${matrix.length} · Cols: ${matrix[0].length}
+    </p>`;
+
+    html += '<table><thead><tr><th>Row \\ Col</th>';
+    for (let c = 0; c < matrix[0].length; c++) html += `<th>Col ${c}</th>`;
+    html += '</tr></thead><tbody>';
+
+    matrix.forEach((row, r) => {
+      html += `<tr><th>Row ${r}</th>`;
+      row.forEach(cell => { html += `<td>${cell}</td>`; });
+      html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+
+    // second demo — string 2D array
+    const names = [
+      ['Alice', 'Bob',   'Carol'],
+      ['Dave',  'Eve',   'Frank'],
+    ];
+    html += `<p class="section-label" style="margin-top:20px">String 2D Array</p>`;
+    html += '<table><thead><tr><th>Row \\ Col</th>';
+    for (let c = 0; c < names[0].length; c++) html += `<th>Col ${c}</th>`;
+    html += '</tr></thead><tbody>';
+    names.forEach((row, r) => {
+      html += `<tr><th>Row ${r}</th>`;
+      row.forEach(cell => { html += `<td>${cell}</td>`; });
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+
+    document.getElementById('twoDOut').innerHTML = html;
+  }
+</script>
+</body>
+</html>
